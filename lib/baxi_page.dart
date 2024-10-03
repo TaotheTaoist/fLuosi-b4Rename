@@ -31,7 +31,9 @@ class BaziPage extends StatefulWidget {
 }
 
 class _BaziPageState extends State<BaziPage> {
-  late double textfont;
+   
+  
+  // late double textfont;
 
   int tappedCellIndex = 0;
   int colorIndexMonth = 0;
@@ -356,6 +358,9 @@ class _BaziPageState extends State<BaziPage> {
   late List<String> runAllgodsLiuMonth;
   late List<String> runAllgodspickDate;
 
+
+  //Fonts
+  
   List<String> getDayunGanShishenZhi(String first, String second) {
     List<String> elements = LunarUtil.ZHI_HIDE_GAN[second] ?? [];
 
@@ -1624,6 +1629,71 @@ class _BaziPageState extends State<BaziPage> {
 
   @override
   Widget build(BuildContext context) {
+    
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    // Calculate the box size based on screen dimensions
+    final boxHeight = screenHeight * 0.18; // 18% of the screen height
+    final boxWidth = screenWidth * 0.22; // 22% of the screen width
+
+    // Replace with actual index or pass it accordingly
+    int index = 0;
+
+    // Get the number of items in the starMapping list
+
+
+    // Initialize font size and padding variables
+    double textfontSize = 14;
+    double titleFont = 15;
+    double textfontSizeShisen = 10;
+    double liunenCustomFont = 12;
+    double liunenCustomFontshiShen = 10;
+
+       if (screenHeight > 1800) {
+      titleFont = 18;
+      textfontSize = 21;
+      textfontSizeShisen = 14;
+      liunenCustomFont = 16;
+      liunenCustomFontshiShen = 14;
+    } else if (screenHeight > 1200) {
+      titleFont = 17;
+      textfontSize = 20;
+      textfontSizeShisen = 12;
+      liunenCustomFont = 14;
+      liunenCustomFontshiShen = 12;
+    } else if (screenHeight < 1200 && screenHeight > 930) {
+      titleFont = 15;
+      textfontSize = 18;
+      textfontSizeShisen = 11;
+      liunenCustomFont = 12;
+      liunenCustomFontshiShen = 10;
+    } else if (screenHeight < 930 && screenHeight > 780) {
+      titleFont = 14;
+      textfontSize = 17;
+      textfontSizeShisen = 11;
+      liunenCustomFont = 12;
+      liunenCustomFontshiShen = 10;
+    } else if (screenHeight < 780 && screenHeight > 690) {
+      titleFont = 13;
+      textfontSize = 16;
+      textfontSizeShisen = 10;
+
+      liunenCustomFont = 12;
+      liunenCustomFontshiShen = 10;
+    } else if (screenHeight < 690 && screenHeight > 500) {
+      titleFont = 12;
+      textfontSize = 16;
+      textfontSizeShisen = 7;
+      liunenCustomFont = 10;
+      liunenCustomFontshiShen = 9;
+    } else {
+      titleFont = 14;
+      textfontSize = 14;
+      textfontSizeShisen = 10;
+      liunenCustomFont = 12;
+      liunenCustomFontshiShen = 10;
+    }
     if (widget.birthday == null) {
       return Scaffold(
         appBar: AppBar(
@@ -1652,7 +1722,9 @@ class _BaziPageState extends State<BaziPage> {
             children: [
               AutoSizeText(
                 text1,
-                style: TextStyle(fontSize: 15, color: getColorForText(text1)),
+                style: TextStyle(fontSize: titleFont, color: getColorForText(text1),
+                  fontWeight: FontWeight.bold,
+                ),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
                 minFontSize: 6, // Adjust this value as needed
@@ -1660,7 +1732,9 @@ class _BaziPageState extends State<BaziPage> {
               if (text2 != null)
                 AutoSizeText(
                   text2,
-                  style: TextStyle(fontSize: 14, color: getColorForText(text2)),
+                  style: TextStyle(fontSize: titleFont, color: getColorForText(text2),
+                    fontWeight: FontWeight.bold,
+                  ),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                   minFontSize: 6, // Adjust this value as needed
@@ -1680,7 +1754,7 @@ class _BaziPageState extends State<BaziPage> {
           children: [
             AutoSizeText(
               text1,
-              style: TextStyle(fontSize: 12, color: getColorForText(text1)),
+              style: TextStyle(fontSize: titleFont, color: getColorForText(text1)),
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
               minFontSize: 6, // Adjust this value as needed
@@ -1688,7 +1762,7 @@ class _BaziPageState extends State<BaziPage> {
             if (text2 != null)
               AutoSizeText(
                 text2,
-                style: TextStyle(fontSize: 14, color: getColorForText(text2)),
+                style: TextStyle(fontSize: titleFont, color: getColorForText(text2)),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
                 minFontSize: 6, // Adjust this value as needed
@@ -2022,7 +2096,7 @@ class _BaziPageState extends State<BaziPage> {
                 child: AutoSizeText(
                   text1,
                   style: TextStyle(
-                      fontSize: 14,
+                      fontSize: liunenCustomFont,
                       fontWeight: FontWeight.bold,
                       color: getColorForText(text1)),
                   overflow: TextOverflow.visible,
@@ -2036,7 +2110,7 @@ class _BaziPageState extends State<BaziPage> {
                   child: AutoSizeText(
                     text2,
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: liunenCustomFont,
                         fontWeight: FontWeight.bold,
                         color: getColorForText(text2)),
                     overflow: TextOverflow.visible,
@@ -2063,7 +2137,7 @@ class _BaziPageState extends State<BaziPage> {
                 child: AutoSizeText(
                   text1,
                   style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 12,
                       fontWeight: FontWeight.bold,
                       color: getColorForText(text1)),
                   overflow: TextOverflow.visible,
@@ -2077,7 +2151,7 @@ class _BaziPageState extends State<BaziPage> {
                   child: AutoSizeText(
                     text2,
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 12,
                         fontWeight: FontWeight.bold,
                         color: getColorForText(text2)),
                     overflow: TextOverflow.visible,
@@ -2174,7 +2248,7 @@ class _BaziPageState extends State<BaziPage> {
               ? Colors.blue
                   .withOpacity(0.3) // Highlight selected cell with 0.3 opacity
               : Colors.transparent,
-          padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 1.0, vertical: 6.0),
           alignment: Alignment.center,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -2184,7 +2258,7 @@ class _BaziPageState extends State<BaziPage> {
                 child: AutoSizeText(
                   text1,
                   style: TextStyle(
-                      fontSize: 14,
+                      fontSize: liunenCustomFont,
                       fontWeight: FontWeight.bold,
                       color: getColorForText(text1)),
                   overflow: TextOverflow.visible,
@@ -2198,7 +2272,7 @@ class _BaziPageState extends State<BaziPage> {
                   child: AutoSizeText(
                     text2,
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: liunenCustomFont,
                         fontWeight: FontWeight.bold,
                         color: getColorForText(text2)),
                     overflow: TextOverflow.visible,
@@ -2213,6 +2287,12 @@ class _BaziPageState extends State<BaziPage> {
     }
 
     Widget buildCellYearsnum(String text1) {
+       double screenHeight = MediaQuery.of(context).size.height;
+      double screenWidth = MediaQuery.of(context).size.width;
+
+       print("Screen Height: $screenHeight");
+      
+      print("Width: $screenWidth");
       return GestureDetector(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 0.1, vertical: 1.0),
@@ -2266,7 +2346,7 @@ class _BaziPageState extends State<BaziPage> {
                 scrollDirection: Axis.horizontal,
                 child: AutoSizeText(
                   text1,
-                  style: const TextStyle(fontSize: 10),
+                  style: TextStyle(fontSize: liunenCustomFontshiShen),
                   overflow: TextOverflow.visible,
                   maxLines: 1,
                   minFontSize: 8,
@@ -2277,7 +2357,7 @@ class _BaziPageState extends State<BaziPage> {
                 scrollDirection: Axis.horizontal,
                 child: AutoSizeText(
                   text2 ?? '',
-                  style: const TextStyle(fontSize: 10),
+                  style: TextStyle(fontSize: liunenCustomFontshiShen),
                   overflow: TextOverflow.visible,
                   maxLines: 1,
                   minFontSize: 5,
@@ -2291,21 +2371,21 @@ class _BaziPageState extends State<BaziPage> {
 
     // Custom cell widget for complex string layout
     Widget buildCustomCell(String mainText, List<String> sideTexts) {
-      final screenHeight = MediaQuery.of(context).size.height;
-      if (screenHeight < 790) {
-        textfont = 16;
-        // pizel 5 6inch Screen Height: 802.9090909090909
-      } else if (screenHeight < 830) {
-        textfont = 16;
-      } else if (screenHeight < 870) {
-        textfont = 17;
-      } else if (screenHeight < 950) {
-        textfont = 20;
-      } else {
-        textfont = 20;
-      }
+      // final screenHeight = MediaQuery.of(context).size.height;
+      // if (screenHeight < 790) {
+      //   textfont = 16;
+      //   // pizel 5 6inch Screen Height: 802.9090909090909
+      // } else if (screenHeight < 830) {
+      //   textfont = 16;
+      // } else if (screenHeight < 870) {
+      //   textfont = 17;
+      // } else if (screenHeight < 950) {
+      //   textfont = 20;
+      // } else {
+      //   textfont = 20;
+      // }
       return Container(
-        padding: EdgeInsets.symmetric(horizontal: 6.0, vertical: 8.0),
+        padding: EdgeInsets.symmetric(horizontal: 4.0, vertical: 8.0),
         alignment: Alignment.center,
         child: Row(
           children: [
@@ -2315,7 +2395,7 @@ class _BaziPageState extends State<BaziPage> {
               child: Text(
                 mainText,
                 style: TextStyle(
-                    fontSize: textfont,
+                    fontSize: textfontSize,
                     color: getColorForText(mainText),
                     fontWeight: FontWeight.bold),
                 overflow: TextOverflow.ellipsis,
@@ -2328,7 +2408,7 @@ class _BaziPageState extends State<BaziPage> {
                 children: sideTexts.map((text) {
                   return Text(
                     text,
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: textfontSizeShisen, fontWeight: FontWeight.bold),
                     overflow: TextOverflow.ellipsis,
                   );
                 }).toList(),
@@ -2690,7 +2770,14 @@ class _BaziPageState extends State<BaziPage> {
 
     List<TableRow> longTableRows = [
       buildLongRowNnoBorder([
-        Text('月干'),
+        Text(
+          '月干',
+          style: TextStyle(
+            fontSize: titleFont, 
+                        fontWeight: FontWeight.bold, // Set your desired font size here
+          ),
+        ),
+
         buildLongCell(liuMonthGan, 2, [liuMonthZh1shishengan]),
         buildLongCell(liuMonthGan2, 3, [liuMonthZhi2shishengan]),
         buildLongCell(liuMonthGan3, 4, [liuMonthZhi3shishengan]),
@@ -2705,7 +2792,14 @@ class _BaziPageState extends State<BaziPage> {
         buildLongCell(liuMonthGan12, 1, [liuMonthZhi12shishengan]),
       ]),
       buildLongRow([
-        Text('月支'),
+        Text(
+          '月支',
+          style: TextStyle(
+            fontSize: titleFont,
+            fontWeight: FontWeight.bold, 
+          ),
+        ),
+
         buildLongCell('寅', 2, [liuMonthZh1shishenzhi]),
         buildLongCell('卯', 3, [liuMonthZhi2shishenzhi]),
         buildLongCell('辰', 4, [liuMonthZhi3shishenzhi]),

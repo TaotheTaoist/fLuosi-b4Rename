@@ -790,9 +790,9 @@ class _ZweiState extends State<Zwei> {
     } else if (screenHeight < 930 && screenHeight > 780) {
       fontSize = 10.0;
     } else if (screenHeight < 780 && screenHeight > 690) {
-      fontSize = 10.0;
+      fontSize = 9.0;
     } else if (screenHeight < 690 && screenHeight > 500) {
-      fontSize = 8.0;
+      fontSize = 7.0;
     } else {
       fontSize = 8.0;
     }
@@ -1580,7 +1580,7 @@ class _ZweiState extends State<Zwei> {
             } else if (screenHeight < 690 && screenHeight > 500) {
               // For medium screens (e.g., larger phones)
               widthFactor = 0.6;
-              fontSize = 11;
+              fontSize = 10;
               topPosition = screenHeight * 0.19; // 19% from the top
               height = screenHeight * 0.33;
               // arrowSize = 5; // Medium-sized arrow
@@ -1981,10 +1981,10 @@ class _ZweiState extends State<Zwei> {
           topPosition = screenHeight * 0.20; // 20% from the top
           height = screenHeight * 0.20;
           sizeBoxSiz = 1;
-           fontSize = 6;
+           fontSize = 10;
           forWidth = 0.02;
-          arrowSize = 15; // Smaller arrow for small screens
-          arrowTopPosition = screenHeight * 0.25;
+          // arrowSize = 15; // Smaller arrow for small screens
+          // arrowTopPosition = screenHeight * 0.25;
         } else {
           // For small screens (e.g., smaller phones)
           topPosition = screenHeight * 0.20; // 20% from the top
@@ -2066,51 +2066,54 @@ class _ZweiState extends State<Zwei> {
     double restructpadding;
     // 4a 5.8 inch
     if (screenHeight < 650) {
+      yunStartrearrangefont = 7.0;
       restructpadding = 24;
       if (itemCount >= 9) {
         fontSize = 7.0;
-        yunStartrearrangefont = 7.0;
+        
         rearrangeListFont = 9;
         
       } else if (itemCount >= 8) {
         fontSize = 8.0;
-        yunStartrearrangefont = 7.0;
+        
          rearrangeListFont = 9;
         
       } else if (itemCount >= 7) {
         fontSize = 9.0;
-        yunStartrearrangefont = 7.0;
+       
          rearrangeListFont = 9;
          
         
       } else {
-        yunStartrearrangefont = 7.0;
+        
         fontSize = 9.0;
          rearrangeListFont = 9;
          
          
       }
-   }else if (screenHeight < 790) {
-    restructpadding = 24;
+   }else if (screenHeight < 700) {
+    restructpadding = 21;
+    rearrangeListFont = 6;
+    yunStartrearrangefont = 7.0;
       if (itemCount >= 9) {
-        fontSize = 8.0;
-        yunStartrearrangefont = 10.0;
-        rearrangeListFont = 10;
+        fontSize = 7.0;
+       
+        
         
       } else if (itemCount >= 8) {
-        fontSize = 9.0;
-        yunStartrearrangefont = 10.0;
-        rearrangeListFont = 10;
+        fontSize = 8.0;
+        
+       
         
       } else if (itemCount >= 7) {
-        fontSize = 10.0;
-        yunStartrearrangefont = 10.0;
-        rearrangeListFont = 10;
+        fontSize = 9.0;
+        
+        
         
       } else {
-        yunStartrearrangefont = 10.0;
-        rearrangeListFont = 10;
-        fontSize = 12.0;
+        
+        
+        fontSize = 10.0;
         
       }
       // pizel 5 6inch Screen Height: 802.9090909090909
@@ -2706,7 +2709,7 @@ class _ZweiState extends State<Zwei> {
                                     child: AutoSizeText(
                                       restruct[index]!,
                                       maxLines: 1,
-                                      minFontSize: 6,
+                                      minFontSize: 4,
                                       maxFontSize: rearrangeListFont,
                                       style: TextStyle(
                                           color: const Color.fromARGB(
