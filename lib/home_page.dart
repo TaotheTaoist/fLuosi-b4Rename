@@ -5,17 +5,25 @@ import 'new_member.dart';
 import 'new_member_dialog.dart';
 import 'baxi_page.dart';
 import 'edit_member_dialog.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:learn1/lang/TranslationKey.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:learn1/lang/languageProvider.dart';
+import 'package:provider/provider.dart';
+
 
 class HomePage extends StatefulWidget {
   final Isar isar;
-
-  const HomePage({Key? key, required this.isar}) : super(key: key);
+  bool isSelected = false; 
+  
+   HomePage({Key? key, required this.isar}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+   bool _isEnglish = true;
   final ValueNotifier<int?> selectedMemberIdNotifier =
       ValueNotifier<int?>(null);
 
@@ -23,11 +31,26 @@ class _HomePageState extends State<HomePage> {
   int? selectedMemberId;
   NewMember? lastDeletedMember; // Track last deleted member
   String? lastOperation; // Track last operation type
+ 
 
   @override
   void initState() {
+      _loadLanguagePreference(); // Load the saved language preference when the app starts
     super.initState();
     memberStream = widget.isar.newMembers.where().findAll().asStream();
+  }
+   // Function to save the language preference to SharedPreferences
+  Future<void> _saveLanguagePreference() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isEnglish', _isEnglish);
+  }
+
+  // Function to toggle the language and save the preference
+  void _toggleLanguage() {
+    setState(() {
+      // _isEnglish = !_isEnglish;
+    });
+    _saveLanguagePreference(); // Save the new preference
   }
 
   Stream<List<NewMember>> _getFilteredMembersStream(String query) {
@@ -42,7 +65,13 @@ class _HomePageState extends State<HomePage> {
           .asStream();
     }
   }
-
+  // Function to load the saved language preference from SharedPreferences
+  Future<void> _loadLanguagePreference() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+       _toggleLanguage(); 
+    });
+  }
   // void _editMember(NewMember member) {
   //   showDialog(
   //     context: context,
@@ -120,8 +149,20 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Locale locale = Localizations.localeOf(context);
+     bool isSimplifiedChinese =
+        locale.languageCode == 'zh' && locale.scriptCode == 'Hans';
+    bool isTraditionalChinese =
+        locale.languageCode == 'zh' && locale.scriptCode == 'Hant';
+     if (isSimplifiedChinese) {
+      print('System language is Simplified Chinese');
+    } else if (isTraditionalChinese) {
+      print('System language is Traditional Chinese');
+    } else {
+      print('System language is not Chinese');
+    }
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 127, 189, 218),
+      backgroundColor: const Color.fromARGB(255, 127, 189, 218),
 
       appBar: AppBar(
         title: const Text('LuOSi'),
@@ -131,6 +172,21 @@ class _HomePageState extends State<HomePage> {
           //   onPressed: _undoLastOperation, // Call undo method
           // ),
           // if (selectedMemberId != null) ...[
+
+            
+         IconButton(
+  icon: Icon(_isEnglish ? Icons.translate : FontAwesomeIcons.language),
+  onPressed: () {
+    setState(() {
+      _isEnglish = !_isEnglish; // Toggle the language
+       Provider.of<LanguageProvider>(context, listen: false)
+                    .toggleLanguage();
+    });
+  },
+),
+
+           // spacing
+         
           IconButton(
             icon: const Icon(Icons.edit),
             onPressed: () async {
@@ -148,17 +204,18 @@ class _HomePageState extends State<HomePage> {
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title: const Text('刪除'),
-                    content: const Text('確定刪除此人?'),
+                    title:  Text(translate(TranslationKey.delete, _isEnglish)),
+                    content: Text(translate(TranslationKey.areyousure, _isEnglish)),
                     actions: <Widget>[
                       TextButton(
-                        child: const Text('取消'),
+                        child:  Text(translate(TranslationKey.cancel, _isEnglish)),
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
                       ),
                       TextButton(
-                        child: const Text('刪除'),
+                        child:  Text(
+                            translate(TranslationKey.delete, _isEnglish)),
                         onPressed: () async {
                           if (selectedMemberId != null) {
                             await _deleteMember(selectedMemberId!);
@@ -291,7 +348,7 @@ class _HomePageState extends State<HomePage> {
                     margin: const EdgeInsets.all(16.0),
                     padding: const EdgeInsets.all(16.0),
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 202, 202, 202),
+                      color: const Color.fromARGB(255, 202, 202, 202),
                       borderRadius: BorderRadius.circular(5.0),
                     ),
                     child: StatefulBuilder(
@@ -318,15 +375,44 @@ class _HomePageState extends State<HomePage> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text('姓名: ${member.name}'),
+                                      Text(
+                                        '${translate(TranslationKey.name, _isEnglish)}: ${member.name}', // Using TranslationKey for dynamic language
+                                        style: TextStyle(
+                                          color: Colors
+                                              .black, // Set your desired color
+                                        ),
+                                      ),
                                       Text('ID: ${member.id}'),
                                     ],
                                   ),
-                                  subtitle: Text(
-                                    '性別: ${member.isMale ? "Male" : "Female"}, '
-                                    '生日: ${member.birthday != null ? member.birthday!.toLocal().toString().split(' ')[0] : "Not set"}, '
-                                    '時間: ${member.time ?? "Not set"}',
+                                  subtitle: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Text(
+                                              '${translate(TranslationKey.sex, _isEnglish)}: '),
+                                          Icon(
+                                            member.isMale
+                                                ? Icons.male
+                                                : Icons.female,
+                                            color: member.isMale
+                                                ? Colors.blue
+                                                : Colors.pink,
+                                          ),
+                                        ],
+                                      ),
+                                      Text(
+                                        '${translate(TranslationKey.bd, _isEnglish)}: ${member.birthday != null ? member.birthday!.toLocal().toString().split(' ')[0] : "Not set"}',
+                                      ),
+                                      Text(
+                                        '${translate(TranslationKey.time, _isEnglish)}: ${member.time ?? "Not set"}',
+                                      ),
+                                    ],
                                   ),
+
+
                                 ),
                               ),
                             );
@@ -424,7 +510,7 @@ class _HomePageState extends State<HomePage> {
                           delegate: MemberSearchDelegate(widget.isar),
                         );
                       },
-                      color: Color.fromARGB(255, 255, 255, 255),
+                      color: const Color.fromARGB(255, 255, 255, 255),
                     ),
                   ),
                   Expanded(
@@ -450,10 +536,14 @@ class _HomePageState extends State<HomePage> {
                           });
                         }
                       },
-                      child: const Text(
-                        '紫薇',
-                        style: TextStyle(color: Colors.white),
+                      child:  Text(
+                        translate(TranslationKey.ziwei, _isEnglish),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22.0, // Set your desired font size here
+                        ),
                       ),
+
                     ),
                   ),
                   Expanded(
@@ -478,9 +568,10 @@ class _HomePageState extends State<HomePage> {
                           });
                         }
                       },
-                      child: const Text(
-                        '八字',
-                        style: TextStyle(color: Colors.white),
+                      child:   Text(
+                        translate(TranslationKey.bazi, _isEnglish),
+                        style: TextStyle(color: Colors.white,
+                        fontSize: 22.0,),
                       ),
                     ),
                   ),
@@ -497,6 +588,7 @@ class _HomePageState extends State<HomePage> {
 class MemberSearchDelegate extends SearchDelegate {
   final Isar isar;
   int? selectedMemberId; // Add selectedMemberId here
+  bool _isEnglish = true;
 
   MemberSearchDelegate(this.isar);
 
@@ -569,7 +661,14 @@ class MemberSearchDelegate extends SearchDelegate {
                     title: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('姓名: ${member.name}'),
+                        Text(
+                          '${translate(TranslationKey.name, _isEnglish)}: ${member.name}', // Using TranslationKey for dynamic language
+                          style: TextStyle(
+                            color: Colors.black, // Set your desired color
+                       
+                          ),
+                        ),
+
                         Text('ID: ${member.id}'),
                       ],
                     ),

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:learn1/baxi_page.dart';
@@ -2166,12 +2168,12 @@ class _ZweiState extends State<Zwei> {
     } else if (screenHeight < 930) {
       restructpadding = 24;
       if (itemCount >= 9) {
-        fontSize = 11.0;
+        fontSize = 8.0;
         yunStartrearrangefont = 9.0;
         rearrangeListFont = 10;
         
       } else if (itemCount >= 8) {
-        fontSize = 11.0;
+        fontSize = 9.0;
         yunStartrearrangefont = 10.0;
         rearrangeListFont = 10;
         
