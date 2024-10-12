@@ -405,7 +405,7 @@ class _NewMemberDialogState extends State<NewMemberDialog> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                      Text(
-                        '${translate(TranslationKey.time, isEnglish)}: ${selectedDate != null ? "${selectedDate!.toLocal()}".split(' ')[0] : '${translate(TranslationKey.unselected, isEnglish)}'}'),
+                        '${translate(TranslationKey.time, isEnglish)}: ${selectedTime != null ? "${selectedTime!.format(context)}".split(' ')[0] : '${translate(TranslationKey.unselected, isEnglish)}'}'),
                     TextButton(
                       onPressed: () => _selectTime(context),
                       child:  Text(

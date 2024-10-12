@@ -27,7 +27,7 @@ const Map<TranslationKey, String> translationsEn = {
   TranslationKey.ziwei: 'Ziwei',
   TranslationKey.name: 'Name: ',
   TranslationKey.sex: 'Sex',
-  TranslationKey.bd: 'Birthday',
+  TranslationKey.bd: 'B-day',
   TranslationKey.time: 'Time',
   TranslationKey.edit: 'Edit',
   TranslationKey.pickatime: 'Birth Time',
@@ -35,6 +35,7 @@ const Map<TranslationKey, String> translationsEn = {
   TranslationKey.enterUrBd: 'Enter Bday',
   TranslationKey.addnewMember: 'Add New Member',
   TranslationKey.unselected: 'Unselected',
+  TranslationKey.cancel: 'Cancel',
 };
 
 const Map<TranslationKey, String> translationsZh = {
@@ -45,7 +46,7 @@ const Map<TranslationKey, String> translationsZh = {
   TranslationKey.ziwei: '紫薇',
   TranslationKey.sex: '性別',
   TranslationKey.bd: '生日',
-  TranslationKey.time: '時間: ',
+  TranslationKey.time: '時間',
 
   TranslationKey.name: '姓名: ',
   TranslationKey.edit: '更改資料',
@@ -54,7 +55,7 @@ const Map<TranslationKey, String> translationsZh = {
   TranslationKey.pickatime: '出生時間',
   TranslationKey.cancel: '取消',
    TranslationKey.addnewMember: '加新資料',
-   TranslationKey.unselected: '"還未選',
+   TranslationKey.unselected: '還未選',
  
 };
 

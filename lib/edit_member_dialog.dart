@@ -269,7 +269,7 @@ class _EditMemberDialogState extends State<EditMemberDialog> {
   void _saveMember() async {
     if (nameController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('請輸入名子')),
+        SnackBar(content: Text('請輸入名子 Please Enter Your Name.')),
       );
       return;
     }
@@ -279,7 +279,7 @@ class _EditMemberDialogState extends State<EditMemberDialog> {
 
     if (newId == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Invalid ID entered.')),
+        SnackBar(content: Text('無法用此 ID , Invalid ID entered.')),
       );
       return;
     }
@@ -293,9 +293,9 @@ class _EditMemberDialogState extends State<EditMemberDialog> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('已有此ID'),
+            title: Text('已有此ID,this ID being used.'),
             content: Text(
-                'A member with ID $newId already exists. Please choose a different ID.'),
+                'A member with ID $newId already exists. Please choose a different ID. 此ID $newId 已被使用.'),
             actions: [
               TextButton(
                 onPressed: () {
@@ -333,7 +333,7 @@ class _EditMemberDialogState extends State<EditMemberDialog> {
           .pop(widget.member); // Close dialog and pass back the updated member
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('無法更改: $e')),
+        SnackBar(content: Text('unable to change 無法更改: $e')),
       );
     }
   }
