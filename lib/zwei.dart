@@ -2,14 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:learn1/baxi_page.dart';
+
 import 'package:learn1/calendar/eightchar/DaYun.dart';
 import 'package:learn1/calendar/eightchar/Yun.dart';
 import 'new_member.dart'; // Import NewMember class
 import 'package:learn1/calendar/EightChar.dart';
-import 'package:learn1/calendar/util/LunarUtil.dart';
+
 import 'package:learn1/lunarCal/ZiweiFunc/ZiweiFunc.dart';
-import 'package:learn1/calendar/util/LunarUtil.dart';
+
 
 import 'package:learn1/calendar/Lunar.dart' as lunar;
 // void main() => runApp(Zwei());
@@ -779,7 +779,7 @@ class _ZweiState extends State<Zwei> {
 //   }
 
   Widget dayunCustom(String range, String sign, int dayunIndex) {
-    final screenWidth = MediaQuery.of(context).size.width;
+    // final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     double fontSize;
 
@@ -1059,7 +1059,7 @@ class _ZweiState extends State<Zwei> {
   }
 
   Widget liunenCustom(String range, String sign, int index) {
-     final screenWidth = MediaQuery.of(context).size.width;
+    //  final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     double fontSize;
 
@@ -1319,7 +1319,7 @@ class _ZweiState extends State<Zwei> {
 
   Widget buildCellYearsShiShen(String text1, int index, [String? text2]) {
      double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
+   
     double fontSize;
     if (screenHeight > 1800) {
      
@@ -1430,30 +1430,30 @@ class _ZweiState extends State<Zwei> {
     return LayoutBuilder(
       builder: (context, constraints) {
         double screenHeight = MediaQuery.of(context).size.height;
-        double screenWidth = MediaQuery.of(context).size.width;
-        double fontSizeFactor;
+        // double screenWidth = MediaQuery.of(context).size.width;
+        // double fontSizeFactor;
         double fontSize ;
         
          if (screenHeight > 1800) {
           fontSize = 14.0;
-          fontSizeFactor = 0.025; // Adjusted for smaller screensns
+          // fontSizeFactor = 0.025; // Adjusted for smaller screensns
         
         } else if (screenHeight < 1200 && screenHeight > 930) {
          fontSize = 12.0;
-          fontSizeFactor = 0.025; // Adjusted for smaller screensns
+          // fontSizeFactor = 0.025; // Adjusted for smaller screensns
           
         } else if (screenHeight < 930 && screenHeight > 780) {
          fontSize = 10.0;
-          fontSizeFactor = 0.025; // Adjusted for smaller screensns
+          // fontSizeFactor = 0.025; // Adjusted for smaller screensns
         } else if (screenHeight < 780 && screenHeight > 690) {
          fontSize = 10.0;
-          fontSizeFactor = 0.025; // Adjusted for smaller screensns
+          // fontSizeFactor = 0.025; // Adjusted for smaller screensns
         } else if (screenHeight < 690 && screenHeight > 500) {
           fontSize = 8.0;
-          fontSizeFactor = 0.025; // Adjusted for smaller screensns
+          // fontSizeFactor = 0.025; // Adjusted for smaller screensns
         } else {
          fontSize = 8.0;
-          fontSizeFactor = 0.025; // Adjusted for smaller screensns
+          // fontSizeFactor = 0.025; // Adjusted for smaller screensns
         }
        
 
@@ -1512,10 +1512,10 @@ class _ZweiState extends State<Zwei> {
 
     double fontSize = screenWidth * 0.03; // Adjust the multiplier as needed
     double topPosition;
-    double height;
-    double sizeBox;
-    double arrowSize;
-    double arrowTopPosition;
+    // double height;
+    // double sizeBox;
+    // double arrowSize;
+    // double arrowTopPosition;
 
     return Stack(
       children: [
@@ -1926,76 +1926,76 @@ class _ZweiState extends State<Zwei> {
       
       builder: (context, constraints) {
         double screenHeight = MediaQuery.of(context).size.height;
-        double screenWidth = MediaQuery.of(context).size.width;
-        double forWidth;
+        // double screenWidth = MediaQuery.of(context).size.width;
+        
         double sizeBoxSiz;
-        double topPosition;
-        double height;
-        double arrowSize;
-        double arrowTopPosition;
+        // double topPosition;
+        // double height;
+        // double arrowSize;
+        // double arrowTopPosition;
         if (screenHeight > 1800) {
           // For large screens (e.g., tablets or desktops)
-          topPosition = screenHeight * 0.19;
+          // topPosition = screenHeight * 0.19;
 
           sizeBoxSiz = 4;
-          forWidth = 0.03;
+          
           fontSize = 22;
-          height = screenHeight * 0.3; // 30% of screen height
+          // height = screenHeight * 0.3; // 30% of screen height
          } else if (screenHeight > 1200) {
            // For large screens (e.g., tablets or desktops)
-          topPosition = screenHeight * 0.19;
+          // topPosition = screenHeight * 0.19;
         
           sizeBoxSiz = 4;
-          forWidth = 0.03;
+          
           fontSize = 16;
-          height = screenHeight * 0.3; // 30% of screen height
+          // height = screenHeight * 0.3; // 30% of screen height
         
         } else if (screenHeight < 1200 && screenHeight > 930) {
             // For medium screens (e.g., larger phones)
-          topPosition = screenHeight * 0.19; // 19% from the top
-          height = screenHeight * 0.34;
+          // topPosition = screenHeight * 0.19; // 19% from the top
+          // height = screenHeight * 0.34;
           sizeBoxSiz = 2;
-          forWidth = 0.4;
+          
            fontSize = 15;
-          arrowSize = 5; // Medium-sized arrow
-          arrowTopPosition = screenHeight * 0.73; // 73% of screen height
+          // arrowSize = 5; // Medium-sized arrow
+          // arrowTopPosition = screenHeight * 0.73; // 73% of screen height
         } else if (screenHeight < 930 && screenHeight > 780) {
          // For small screens (e.g., smaller phones)
-          topPosition = screenHeight * 0.25; // 20% from the top
-          height = screenHeight * 0.20;
+          // topPosition = screenHeight * 0.25; // 20% from the top
+          // height = screenHeight * 0.20;
           sizeBoxSiz = 6;
-          forWidth = 0.03;
+         
            fontSize = 14;
-          arrowSize = 15; // Smaller arrow for small screens
-          arrowTopPosition = screenHeight * 0.25;
+          // arrowSize = 15; // Smaller arrow for small screens
+          // arrowTopPosition = screenHeight * 0.25;
         } else if (screenHeight < 780 && screenHeight > 690) {
          // For small screens (e.g., smaller phones)
-          topPosition = screenHeight * 0.20; // 20% from the top
-          height = screenHeight * 0.20;
+          // topPosition = screenHeight * 0.20; // 20% from the top
+          // height = screenHeight * 0.20;
           sizeBoxSiz = 2;
-          forWidth = 0.02;
+          
 
            fontSize = 13;
-          arrowSize = 15; // Smaller arrow for small screens
-          arrowTopPosition = screenHeight * 0.25;
+          // arrowSize = 15; // Smaller arrow for small screens
+          // arrowTopPosition = screenHeight * 0.25;
         } else if (screenHeight < 690 && screenHeight > 500) {
           // For small screens (e.g., smaller phones)
-          topPosition = screenHeight * 0.20; // 20% from the top
-          height = screenHeight * 0.20;
+          // topPosition = screenHeight * 0.20; // 20% from the top
+          // height = screenHeight * 0.20;
           sizeBoxSiz = 1;
            fontSize = 10;
-          forWidth = 0.02;
+          
           // arrowSize = 15; // Smaller arrow for small screens
           // arrowTopPosition = screenHeight * 0.25;
         } else {
           // For small screens (e.g., smaller phones)
-          topPosition = screenHeight * 0.20; // 20% from the top
-          height = screenHeight * 0.20;
+          // topPosition = screenHeight * 0.20; // 20% from the top
+          // height = screenHeight * 0.20;
           sizeBoxSiz = 1;
            fontSize = 8;
-          forWidth = 0.02;
-          arrowSize = 15; // Smaller arrow for small screens
-          arrowTopPosition = screenHeight * 0.25;
+          
+          // arrowSize = 15; // Smaller arrow for small screens
+          // arrowTopPosition = screenHeight * 0.25;
         }
         // Adjust values based on screen height
        
@@ -2061,9 +2061,9 @@ class _ZweiState extends State<Zwei> {
 
 // Determine font size based on the number of items
     double fontSize;
-    double resturctSize;
+    // double resturctSize;
     double yunStartrearrangefont = 7.0;
-    double liuMonthFontSize;
+    // double liuMonthFontSize;
     double rearrangeListFont;
     double restructpadding;
     // 4a 5.8 inch
@@ -2492,11 +2492,8 @@ class _ZweiState extends State<Zwei> {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: (starBrightness[index + 1] ?? []).map((str) {
-                        Map<String, Color> currentGanColors =
-                            ganColorMapping[selectedTiangan] ?? {};
-                        Color textColor2 = colorMapping[str] ?? Colors.white;
-                        Color textColor = currentGanColors[str] ?? textColor2;
-                        Color backgroundColor = textColor;
+                    
+                        
 
                         return ConstrainedBox(
                           constraints: BoxConstraints(
@@ -2624,7 +2621,7 @@ class _ZweiState extends State<Zwei> {
                                     18)), // Red border for first AutoSizeText
                           ),
                           child: AutoSizeText(
-                            yunStartrearrange[index]!,
+                            yunStartrearrange[index],
                             maxLines: 1,
                             minFontSize: 2,
                             maxFontSize: yunStartrearrangefont,
@@ -2640,7 +2637,7 @@ class _ZweiState extends State<Zwei> {
                       Column(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.end,
-                        children: rearrangeAndInsertplaceHolder[index]!
+                        children: rearrangeAndInsertplaceHolder[index]
                             .split(
                                 '') // Split the string into individual characters
                             .map((g) {
@@ -2669,7 +2666,7 @@ class _ZweiState extends State<Zwei> {
                               .transparent), // Blue border for second AutoSizeText
                     ),
                     child: AutoSizeText(
-                      shoyunStartrearrange[index]!,
+                      shoyunStartrearrange[index],
                       maxLines: 1,
                       minFontSize: 2,
                       maxFontSize: yunStartrearrangefont,
@@ -2709,7 +2706,7 @@ class _ZweiState extends State<Zwei> {
                                   child: Align(
                                     alignment: Alignment.bottomLeft,
                                     child: AutoSizeText(
-                                      restruct[index]!,
+                                      restruct[index],
                                       maxLines: 1,
                                       minFontSize: 4,
                                       maxFontSize: rearrangeListFont,
@@ -2727,7 +2724,7 @@ class _ZweiState extends State<Zwei> {
                                   child: Align(
                                     alignment: Alignment.bottomRight,
                                     child: AutoSizeText(
-                                      rearrangeList[index]!,
+                                      rearrangeList[index],
                                       maxLines: 1,
                                       minFontSize: 2,
                                       maxFontSize: rearrangeListFont,
@@ -2747,7 +2744,7 @@ class _ZweiState extends State<Zwei> {
                   Align(
                     alignment: Alignment.bottomLeft,
                     child: AutoSizeText(
-                      liuMonth[index]!,
+                      liuMonth[index],
                       maxLines: 1,
                       minFontSize: 2,
                       maxFontSize: rearrangeListFont,
@@ -2759,7 +2756,7 @@ class _ZweiState extends State<Zwei> {
                   Align(
                     alignment: Alignment.bottomRight,
                     child: AutoSizeText(
-                      fiveTiger[index]!,
+                      fiveTiger[index],
                       maxLines: 1,
                       minFontSize: 2,
                       maxFontSize: rearrangeListFont,
@@ -2778,7 +2775,7 @@ class _ZweiState extends State<Zwei> {
   }
 
   Widget buildCellYearsnum(String text1) {
-    final screenWidth = MediaQuery.of(context).size.width;
+    // final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 double fontSize;
 
