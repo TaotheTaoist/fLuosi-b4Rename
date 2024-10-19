@@ -1630,15 +1630,13 @@ class _BaziPageState extends State<BaziPage> {
   @override
   Widget build(BuildContext context) {
     
-    final screenWidth = MediaQuery.of(context).size.width;
+    // final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
     // Calculate the box size based on screen dimensions
-    final boxHeight = screenHeight * 0.18; // 18% of the screen height
-    final boxWidth = screenWidth * 0.22; // 22% of the screen width
-
+    
     // Replace with actual index or pass it accordingly
-    int index = 0;
+   
 
     // Get the number of items in the starMapping list
 
@@ -2814,6 +2812,7 @@ class _BaziPageState extends State<BaziPage> {
         buildLongCell('丑', 1, [liuMonthZhi12shishenzhi]),
       ]),
     ];
+    // ignore: duplicate_ignore
     // ignore: non_constant_identifier_names
     List<TableRow> StarsRows = [
       buildRow([

@@ -188,6 +188,8 @@ class gods {
     String moonderc = "";
     String happygodc = "";
 
+    String suicidalc = "";
+    String suicidalcc = "";
     String guoYinYearc = "";
     String guoyindayc = "";
     String learnerc = "";
@@ -273,6 +275,8 @@ class gods {
     moonderc = moonDer(monthbot, subject);
     tianderc = tianDer(monthbot, subject);
     fiveghostc = fiveGhost(monthbot, daybot);
+    suicidalc = suicidal(daybot, monthbot);
+    suicidalcc = suicidal(daybot, yearBot);
 
     List<String> allgods = [
       tianyic,
@@ -326,7 +330,9 @@ class gods {
       pearlc,
       pearlyearc,
       happygodyearc,
-      ironmanc
+      ironmanc,
+      suicidalcc,
+      suicidalc
     ];
 
     List<String> allgodset = [];
@@ -529,6 +535,8 @@ class gods {
     String pearlyearc = "";
     String happygodyearc = "";
     String sixbadsc = "";
+    String suicidalcc = "";
+    String suicidalc = "";
 
     // Calculations (replace with your actual calculation functions)
     sixbadsc = sixBads(daybot, yearBot);
@@ -563,6 +571,8 @@ class gods {
     generalc = general(daybot, yearBot);
     happygodc = happyGod(subject, yearBot);
     hongYangc = hongyang(subject, yearBot);
+    suicidalc = suicidal(yearBot, monthbot);
+    suicidalcc = suicidal(yearBot, daybot);
 
     List<String> allgods = [
       tianyic,
@@ -596,7 +606,9 @@ class gods {
       pearlc,
       pearlyearc,
       happygodyearc,
-      sixbadsc
+      sixbadsc,
+      suicidalc,
+      suicidalcc
     ];
 
     List<String> allgodset = [];
@@ -2701,7 +2713,7 @@ class gods {
       return "咸池";
     } else if (validSubjects12.contains(yearOrdayBot) &&
         validTimebots12.contains(timebot)) {
-      return "將星";
+      return "咸池";
     }
 
     return "";
@@ -3188,6 +3200,30 @@ class gods {
     if (validCombinations.containsKey(yearOrdayBot) &&
         validCombinations[yearOrdayBot]!.contains(timebot)) {
       return "羊刃";
+    }
+
+    return "";
+  }
+
+  static String suicidal(String yearOrdayBot, String timebot) {
+    final Map<String, Set<String>> validCombinations = {
+      "辰": {"亥"},
+      "亥": {"辰"},
+      "戌": {"巳"},
+      "巳": {"戌"},
+      "寅": {"未"},
+      "未": {"寅"},
+      "卯": {"申"},
+      "申": {"卯"},
+      "午": {"丑"},
+      "丑": {"午"},
+      "子": {"酉"},
+      "酉": {"子"},
+    };
+
+    if (validCombinations.containsKey(yearOrdayBot) &&
+        validCombinations[yearOrdayBot]!.contains(timebot)) {
+      return "自縊";
     }
 
     return "";

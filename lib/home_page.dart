@@ -12,6 +12,7 @@ import 'package:learn1/lang/languageProvider.dart';
 import 'package:provider/provider.dart';
 
 
+// ignore: must_be_immutable
 class HomePage extends StatefulWidget {
   final Isar isar;
   bool isSelected = false; 
@@ -67,7 +68,7 @@ class _HomePageState extends State<HomePage> {
   }
   // Function to load the saved language preference from SharedPreferences
   Future<void> _loadLanguagePreference() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
        _toggleLanguage(); 
     });
