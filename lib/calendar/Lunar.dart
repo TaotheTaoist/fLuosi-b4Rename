@@ -102,9 +102,11 @@ class Lunar {
 
   Map<String, Solar> _jieQi = {};
 
-  Lunar.fromYmd(int lunarYear, int lunarMonth, int lunarDay) : this.fromYmdHms(lunarYear, lunarMonth, lunarDay, 0, 0, 0);
+  Lunar.fromYmd(int lunarYear, int lunarMonth, int lunarDay)
+      : this.fromYmdHms(lunarYear, lunarMonth, lunarDay, 0, 0, 0);
 
-  Lunar.fromYmdHms(int lunarYear, int lunarMonth, int lunarDay, int hour, int minute, int second) {
+  Lunar.fromYmdHms(int lunarYear, int lunarMonth, int lunarDay, int hour,
+      int minute, int second) {
     LunarYear y = LunarYear.fromYear(lunarYear);
     LunarMonth? m = y.getMonth(lunarMonth);
     if (null == m) {
@@ -115,7 +117,7 @@ class Lunar {
     }
     int days = m.getDayCount();
     if (lunarDay > days) {
-      days =  1;
+      days = 1;
       // throw 'only $days days in lunar year $lunarYear month $lunarMonth';
     }
     _year = lunarYear;
@@ -358,6 +360,7 @@ class Lunar {
   String getYearZhiExact() => LunarUtil.ZHI[_yearZhiIndexExact + 1];
 
   String getYearInGanZhi() => '${getYearGan()}${getYearZhi()}';
+  String getDayYearInGanZhi() => '${getDayGan()}${getYearZhi()}';
 
   String getYearInGanZhiByLiChun() =>
       '${getYearGanByLiChun()}${getYearZhiByLiChun()}';
@@ -365,6 +368,7 @@ class Lunar {
   String getYearInGanZhiExact() => '${getYearGanExact()}${getYearZhiExact()}';
 
   String getMonthInGanZhi() => '${getMonthGan()}${getMonthZhi()}';
+  String getDayMonthInGanZhi() => '${getDayGan()}${getMonthZhi()}';
 
   String getMonthInGanZhiExact() =>
       '${getMonthGanExact()}${getMonthZhiExact()}';
@@ -422,7 +426,6 @@ class Lunar {
 
   String getMonthInChinese() =>
       (_month < 0 ? '闰' : '') + LunarUtil.MONTH[_month.abs()];
-  
 
   String getDayInChinese() => LunarUtil.DAY[_day];
 
@@ -430,8 +433,9 @@ class Lunar {
 
   String getTimeGan() => LunarUtil.GAN[_timeGanIndex + 1];
 
- 
   String getTimeInGanZhi() => '${getTimeGan()}${getTimeZhi()}';
+
+  String getDayTimeInGanZhi() => '${getDayGan()}${getTimeZhi()}';
 
   String getSeason() => LunarUtil.SEASON[_month.abs()];
 
@@ -759,17 +763,13 @@ class Lunar {
 
   String getYearKongWong() => LunarUtil.KONGWAN[getYearInGanZhi()]!;
 
+  String getTimeXingYun() => LunarUtil.XingYun[getDayTimeInGanZhi()]!;
 
-  
-  String getTimeXingYun() => LunarUtil.XingYun[getTimeInGanZhi()]!;
-
-  String getMonthXingYun() => LunarUtil.XingYun[getMonthInGanZhi()]!;
+  String getMonthXingYun() => LunarUtil.XingYun[getDayMonthInGanZhi()]!;
 
   String getDayXingYun() => LunarUtil.XingYun[getDayInGanZhi()]!;
 
-  String getYearXingYun() => LunarUtil.XingYun[getYearInGanZhi()]!;
-
- 
+  String getYearXingYun() => LunarUtil.XingYun[getDayYearInGanZhi()]!;
 
   List<String> getBaZi() {
     List<String> l = <String>[];
@@ -993,9 +993,12 @@ class Lunar {
     Solar dongZhi = _jieQi['冬至']!;
     Solar dongZhi2 = _jieQi['DONG_ZHI']!;
     Solar xiaZhi = _jieQi['夏至']!;
-    int dongZhiIndex = LunarUtil.getJiaZiIndex(dongZhi.getLunar().getDayInGanZhi());
-    int dongZhiIndex2 = LunarUtil.getJiaZiIndex(dongZhi2.getLunar().getDayInGanZhi());
-    int xiaZhiIndex = LunarUtil.getJiaZiIndex(xiaZhi.getLunar().getDayInGanZhi());
+    int dongZhiIndex =
+        LunarUtil.getJiaZiIndex(dongZhi.getLunar().getDayInGanZhi());
+    int dongZhiIndex2 =
+        LunarUtil.getJiaZiIndex(dongZhi2.getLunar().getDayInGanZhi());
+    int xiaZhiIndex =
+        LunarUtil.getJiaZiIndex(xiaZhi.getLunar().getDayInGanZhi());
     Solar solarShunBai;
     Solar solarShunBai2;
     Solar solarNiZi;
@@ -1018,9 +1021,11 @@ class Lunar {
     }
     String solarNiZiYmd = solarNiZi.toYmd();
     int offset = 0;
-    if (solarYmd.compareTo(solarShunBaiYmd) >= 0 && solarYmd.compareTo(solarNiZiYmd) < 0) {
+    if (solarYmd.compareTo(solarShunBaiYmd) >= 0 &&
+        solarYmd.compareTo(solarNiZiYmd) < 0) {
       offset = _solar!.subtract(solarShunBai) % 9;
-    } else if (solarYmd.compareTo(solarNiZiYmd) >= 0 && solarYmd.compareTo(solarShunBaiYmd2) < 0) {
+    } else if (solarYmd.compareTo(solarNiZiYmd) >= 0 &&
+        solarYmd.compareTo(solarShunBaiYmd2) < 0) {
       offset = 8 - (_solar!.subtract(solarNiZi) % 9);
     } else if (solarYmd.compareTo(solarShunBaiYmd2) >= 0) {
       offset = _solar!.subtract(solarShunBai2) % 9;
@@ -1376,7 +1381,8 @@ class Lunar {
   String getTimeXunKong() => LunarUtil.getXunKong(getTimeInGanZhi());
 
   ShuJiu? getShuJiu() {
-    Solar current = Solar.fromYmd(_solar!.getYear(), _solar!.getMonth(), _solar!.getDay());
+    Solar current =
+        Solar.fromYmd(_solar!.getYear(), _solar!.getMonth(), _solar!.getDay());
     Solar start = _jieQi['DONG_ZHI']!;
     start = Solar.fromYmd(start.getYear(), start.getMonth(), start.getDay());
 
@@ -1385,7 +1391,8 @@ class Lunar {
       start = Solar.fromYmd(start.getYear(), start.getMonth(), start.getDay());
     }
 
-    Solar end = Solar.fromYmd(start.getYear(), start.getMonth(), start.getDay()).next(81);
+    Solar end = Solar.fromYmd(start.getYear(), start.getMonth(), start.getDay())
+        .next(81);
 
     if (current.isBefore(start) || !current.isBefore(end)) {
       return null;
@@ -1396,10 +1403,12 @@ class Lunar {
   }
 
   Fu? getFu() {
-    Solar current = Solar.fromYmd(_solar!.getYear(), _solar!.getMonth(), _solar!.getDay());
+    Solar current =
+        Solar.fromYmd(_solar!.getYear(), _solar!.getMonth(), _solar!.getDay());
     Solar xiaZhi = _jieQi['夏至']!;
     Solar liQiu = _jieQi['立秋']!;
-    Solar start = Solar.fromYmd(xiaZhi.getYear(), xiaZhi.getMonth(), xiaZhi.getDay());
+    Solar start =
+        Solar.fromYmd(xiaZhi.getYear(), xiaZhi.getMonth(), xiaZhi.getDay());
     // 第1个庚日
     int add = 6 - xiaZhi.getLunar().getDayGanIndex();
     if (add < 0) {
@@ -1430,7 +1439,8 @@ class Lunar {
     start = start.next(10);
     days = current.subtract(start);
 
-    Solar liQiuSolar = Solar.fromYmd(liQiu.getYear(), liQiu.getMonth(), liQiu.getDay());
+    Solar liQiuSolar =
+        Solar.fromYmd(liQiu.getYear(), liQiu.getMonth(), liQiu.getDay());
     // 末伏
     if (liQiuSolar.isAfter(start)) {
       // 中伏
@@ -1487,7 +1497,8 @@ class Lunar {
     return lu;
   }
 
-  LunarTime getTime() => LunarTime.fromYmdHms(_year, _month, _day, _hour, _minute, _second);
+  LunarTime getTime() =>
+      LunarTime.fromYmdHms(_year, _month, _day, _hour, _minute, _second);
 
   List<LunarTime> getTimes() {
     List<LunarTime> l = <LunarTime>[];

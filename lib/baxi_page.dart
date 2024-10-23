@@ -31,8 +31,6 @@ class BaziPage extends StatefulWidget {
 }
 
 class _BaziPageState extends State<BaziPage> {
-   
-  
   // late double textfont;
 
   int tappedCellIndex = 0;
@@ -358,9 +356,8 @@ class _BaziPageState extends State<BaziPage> {
   late List<String> runAllgodsLiuMonth;
   late List<String> runAllgodspickDate;
 
-
   //Fonts
-  
+
   List<String> getDayunGanShishenZhi(String first, String second) {
     List<String> elements = LunarUtil.ZHI_HIDE_GAN[second] ?? [];
 
@@ -1629,17 +1626,14 @@ class _BaziPageState extends State<BaziPage> {
 
   @override
   Widget build(BuildContext context) {
-    
     // final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
     // Calculate the box size based on screen dimensions
-    
+
     // Replace with actual index or pass it accordingly
-   
 
     // Get the number of items in the starMapping list
-
 
     // Initialize font size and padding variables
     double textfontSize = 14;
@@ -1648,7 +1642,7 @@ class _BaziPageState extends State<BaziPage> {
     double liunenCustomFont = 12;
     double liunenCustomFontshiShen = 10;
 
-       if (screenHeight > 1800) {
+    if (screenHeight > 1800) {
       titleFont = 18;
       textfontSize = 21;
       textfontSizeShisen = 14;
@@ -1720,7 +1714,9 @@ class _BaziPageState extends State<BaziPage> {
             children: [
               AutoSizeText(
                 text1,
-                style: TextStyle(fontSize: titleFont, color: getColorForText(text1),
+                style: TextStyle(
+                  fontSize: titleFont,
+                  color: getColorForText(text1),
                   fontWeight: FontWeight.bold,
                 ),
                 overflow: TextOverflow.ellipsis,
@@ -1730,7 +1726,9 @@ class _BaziPageState extends State<BaziPage> {
               if (text2 != null)
                 AutoSizeText(
                   text2,
-                  style: TextStyle(fontSize: titleFont, color: getColorForText(text2),
+                  style: TextStyle(
+                    fontSize: titleFont,
+                    color: getColorForText(text2),
                     fontWeight: FontWeight.bold,
                   ),
                   overflow: TextOverflow.ellipsis,
@@ -1752,7 +1750,8 @@ class _BaziPageState extends State<BaziPage> {
           children: [
             AutoSizeText(
               text1,
-              style: TextStyle(fontSize: titleFont, color: getColorForText(text1)),
+              style:
+                  TextStyle(fontSize: titleFont, color: getColorForText(text1)),
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
               minFontSize: 6, // Adjust this value as needed
@@ -1760,7 +1759,8 @@ class _BaziPageState extends State<BaziPage> {
             if (text2 != null)
               AutoSizeText(
                 text2,
-                style: TextStyle(fontSize: titleFont, color: getColorForText(text2)),
+                style: TextStyle(
+                    fontSize: titleFont, color: getColorForText(text2)),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
                 minFontSize: 6, // Adjust this value as needed
@@ -2285,11 +2285,11 @@ class _BaziPageState extends State<BaziPage> {
     }
 
     Widget buildCellYearsnum(String text1) {
-       double screenHeight = MediaQuery.of(context).size.height;
+      double screenHeight = MediaQuery.of(context).size.height;
       double screenWidth = MediaQuery.of(context).size.width;
 
-       print("Screen Height: $screenHeight");
-      
+      print("Screen Height: $screenHeight");
+
       print("Width: $screenWidth");
       return GestureDetector(
         child: Container(
@@ -2406,7 +2406,9 @@ class _BaziPageState extends State<BaziPage> {
                 children: sideTexts.map((text) {
                   return Text(
                     text,
-                    style: TextStyle(fontSize: textfontSizeShisen, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: textfontSizeShisen,
+                        fontWeight: FontWeight.bold),
                     overflow: TextOverflow.ellipsis,
                   );
                 }).toList(),
@@ -2771,11 +2773,10 @@ class _BaziPageState extends State<BaziPage> {
         Text(
           '月干',
           style: TextStyle(
-            fontSize: titleFont, 
-                        fontWeight: FontWeight.bold, // Set your desired font size here
+            fontSize: titleFont,
+            fontWeight: FontWeight.bold, // Set your desired font size here
           ),
         ),
-
         buildLongCell(liuMonthGan, 2, [liuMonthZh1shishengan]),
         buildLongCell(liuMonthGan2, 3, [liuMonthZhi2shishengan]),
         buildLongCell(liuMonthGan3, 4, [liuMonthZhi3shishengan]),
@@ -2794,10 +2795,9 @@ class _BaziPageState extends State<BaziPage> {
           '月支',
           style: TextStyle(
             fontSize: titleFont,
-            fontWeight: FontWeight.bold, 
+            fontWeight: FontWeight.bold,
           ),
         ),
-
         buildLongCell('寅', 2, [liuMonthZh1shishenzhi]),
         buildLongCell('卯', 3, [liuMonthZhi2shishenzhi]),
         buildLongCell('辰', 4, [liuMonthZhi3shishenzhi]),

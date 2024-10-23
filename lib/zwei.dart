@@ -10,7 +10,6 @@ import 'package:learn1/calendar/EightChar.dart';
 
 import 'package:learn1/lunarCal/ZiweiFunc/ZiweiFunc.dart';
 
-
 import 'package:learn1/calendar/Lunar.dart' as lunar;
 // void main() => runApp(Zwei());
 
@@ -1078,7 +1077,7 @@ class _ZweiState extends State<Zwei> {
     } else {
       fontSize = 8.0;
     }
-    
+
     return InkWell(
       onTap: () {
         setState(() {
@@ -1318,38 +1317,23 @@ class _ZweiState extends State<Zwei> {
   }
 
   Widget buildCellYearsShiShen(String text1, int index, [String? text2]) {
-     double screenHeight = MediaQuery.of(context).size.height;
-   
+    double screenHeight = MediaQuery.of(context).size.height;
+
     double fontSize;
     if (screenHeight > 1800) {
-     
       fontSize = 10;
-      
     } else if (screenHeight > 1200) {
-   
       fontSize = 10;
-     
     } else if (screenHeight < 1200 && screenHeight > 930) {
-     
-    
       fontSize = 10;
-     
     } else if (screenHeight < 930 && screenHeight > 780) {
-     
       fontSize = 9;
-     
     } else if (screenHeight < 780 && screenHeight > 690) {
-   
       fontSize = 9;
-    
     } else if (screenHeight < 690 && screenHeight > 500) {
-    
       fontSize = 8;
-      
     } else {
-     
       fontSize = 8;
-    
     }
     return GestureDetector(
       onTap: () {
@@ -1388,76 +1372,33 @@ class _ZweiState extends State<Zwei> {
     );
   }
 
-  // Widget buildCellYears(String text1, int index, [String? text2]) {
-  //   return GestureDetector(
-  //     onTap: () {
-  //       setState(() {});
-  //     },
-  //     child: Container(
-  //       color: Colors.transparent,
-  //       padding: const EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
-  //       alignment: Alignment.center,
-  //       child: Column(
-  //         mainAxisAlignment: MainAxisAlignment.center,
-  //         children: [
-  //           SingleChildScrollView(
-  //             scrollDirection: Axis.horizontal,
-  //             child: AutoSizeText(
-  //               text1,
-  //               style: TextStyle(fontSize: 8),
-  //               overflow: TextOverflow.visible,
-  //               maxLines: 1,
-  //               minFontSize: 6,
-  //             ),
-  //           ),
-  //           if (text2 != null)
-  //             SingleChildScrollView(
-  //               scrollDirection: Axis.horizontal,
-  //               child: AutoSizeText(
-  //                 text2,
-  //                 style: TextStyle(fontSize: 8),
-  //                 overflow: TextOverflow.visible,
-  //                 maxLines: 1,
-  //                 minFontSize: 6,
-  //               ),
-  //             ),
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
   Widget buildCellYears(String text1, int index, [String? text2]) {
     return LayoutBuilder(
       builder: (context, constraints) {
         double screenHeight = MediaQuery.of(context).size.height;
         // double screenWidth = MediaQuery.of(context).size.width;
         // double fontSizeFactor;
-        double fontSize ;
-        
-         if (screenHeight > 1800) {
+        double fontSize;
+
+        if (screenHeight > 1800) {
           fontSize = 14.0;
           // fontSizeFactor = 0.025; // Adjusted for smaller screensns
-        
         } else if (screenHeight < 1200 && screenHeight > 930) {
-         fontSize = 12.0;
+          fontSize = 12.0;
           // fontSizeFactor = 0.025; // Adjusted for smaller screensns
-          
         } else if (screenHeight < 930 && screenHeight > 780) {
-         fontSize = 10.0;
+          fontSize = 10.0;
           // fontSizeFactor = 0.025; // Adjusted for smaller screensns
         } else if (screenHeight < 780 && screenHeight > 690) {
-         fontSize = 10.0;
+          fontSize = 10.0;
           // fontSizeFactor = 0.025; // Adjusted for smaller screensns
         } else if (screenHeight < 690 && screenHeight > 500) {
           fontSize = 8.0;
           // fontSizeFactor = 0.025; // Adjusted for smaller screensns
         } else {
-         fontSize = 8.0;
+          fontSize = 8.0;
           // fontSizeFactor = 0.025; // Adjusted for smaller screensns
         }
-       
-
-       
 
         return GestureDetector(
           onTap: () {
@@ -1521,10 +1462,10 @@ class _ZweiState extends State<Zwei> {
       children: [
         Column(
           children: [
-            buildRow([3, 4, 5, 6]),
-            buildRow([2, null, null, 7]),
-            buildRow([1, null, null, 8]),
-            buildRow([0, 11, 10, 9]),
+            buildRow([3, 4, 5, 6], context),
+            buildRow([2, null, null, 7], context),
+            buildRow([1, null, null, 8], context),
+            buildRow([0, 11, 10, 9], context),
           ],
         ),
         Builder(
@@ -1553,7 +1494,7 @@ class _ZweiState extends State<Zwei> {
               topPosition = screenHeight * 0.19;
               // arrowSize = 50; // Larger arrow for big screens
               // arrowTopPosition = screenHeight * 0.50; // // 19% from the top
-               fontSize = 20;
+              fontSize = 20;
               height = screenHeight * 0.3; // 30% of screen height
             } else if (screenHeight < 1200 && screenHeight > 930) {
               // For medium screens (e.g., larger phones)
@@ -1639,8 +1580,9 @@ class _ZweiState extends State<Zwei> {
                         Container(
                           alignment: Alignment.centerLeft,
                           padding: EdgeInsets.symmetric(horizontal: 18.0),
-                          child: Text('姓名: $name',
-                           style: TextStyle(fontSize: fontSize),
+                          child: Text(
+                            '姓名: $name',
+                            style: TextStyle(fontSize: fontSize),
                           ),
                         ),
                         Container(
@@ -1868,13 +1810,31 @@ class _ZweiState extends State<Zwei> {
     );
   }
 
-  Row buildRow(List<int?> boxIndices) {
+  // Row buildRow(List<int?> boxIndices) {
+
+  //   return Row(
+  //     children: boxIndices.map((index) {
+  //       if (index == null) {
+  //         return Expanded(
+  //             child: Container()); // Handle gaps with empty Expanded containers
+  //       } else {
+  //         return Expanded(
+  //           child: buildBox(index),
+  //         );
+  //       }
+  //     }).toList(),
+  //   );
+  // }
+  Row buildRow(List<int?> boxIndices, BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     return Row(
       children: boxIndices.map((index) {
         if (index == null) {
+          print('九宮 screenWidth:$screenWidth');
           return Expanded(
               child: Container()); // Handle gaps with empty Expanded containers
         } else {
+          print('九宮 screenWidth:$screenWidth');
           return Expanded(
             child: buildBox(index),
           );
@@ -1883,51 +1843,13 @@ class _ZweiState extends State<Zwei> {
     );
   }
 
-  // Widget buildLongCell(String text1, int index, [List<String>? sideTexts]) {
-  //   return GestureDetector(
-  //     onTap: () {},
-  //     child: Container(
-  //       color: Colors.transparent,
-  //       padding: EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
-  //       alignment: Alignment.center,
-  //       constraints:
-  //           const BoxConstraints(minWidth: 40.0), // Adjust minWidth as needed
-  //       child: FittedBox(
-  //         fit: BoxFit.scaleDown,
-  //         child: Row(
-  //           children: [
-  //             Text(
-  //               text1,
-  //               style: TextStyle(fontSize: 12),
-  //               overflow: TextOverflow.ellipsis,
-  //             ),
-  //             SizedBox(width: 4),
-  //             if (sideTexts != null)
-  //               Column(
-  //                 crossAxisAlignment: CrossAxisAlignment.center,
-  //                 children: sideTexts.map((text) {
-  //                   return Text(
-  //                     text,
-  //                     style: TextStyle(fontSize: 12),
-  //                     overflow: TextOverflow.ellipsis,
-  //                   );
-  //                 }).toList(),
-  //               ),
-  //           ],
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
   Widget buildLongCell(String text1, int index, [List<String>? sideTexts]) {
     double fontSize;
     return LayoutBuilder(
-      
       builder: (context, constraints) {
         double screenHeight = MediaQuery.of(context).size.height;
         // double screenWidth = MediaQuery.of(context).size.width;
-        
+
         double sizeBoxSiz;
         // double topPosition;
         // double height;
@@ -1938,44 +1860,42 @@ class _ZweiState extends State<Zwei> {
           // topPosition = screenHeight * 0.19;
 
           sizeBoxSiz = 4;
-          
+
           fontSize = 22;
           // height = screenHeight * 0.3; // 30% of screen height
-         } else if (screenHeight > 1200) {
-           // For large screens (e.g., tablets or desktops)
+        } else if (screenHeight > 1200) {
+          // For large screens (e.g., tablets or desktops)
           // topPosition = screenHeight * 0.19;
-        
+
           sizeBoxSiz = 4;
-          
+
           fontSize = 16;
           // height = screenHeight * 0.3; // 30% of screen height
-        
         } else if (screenHeight < 1200 && screenHeight > 930) {
-            // For medium screens (e.g., larger phones)
+          // For medium screens (e.g., larger phones)
           // topPosition = screenHeight * 0.19; // 19% from the top
           // height = screenHeight * 0.34;
           sizeBoxSiz = 2;
-          
-           fontSize = 15;
+
+          fontSize = 15;
           // arrowSize = 5; // Medium-sized arrow
           // arrowTopPosition = screenHeight * 0.73; // 73% of screen height
         } else if (screenHeight < 930 && screenHeight > 780) {
-         // For small screens (e.g., smaller phones)
+          // For small screens (e.g., smaller phones)
           // topPosition = screenHeight * 0.25; // 20% from the top
           // height = screenHeight * 0.20;
           sizeBoxSiz = 6;
-         
-           fontSize = 14;
+
+          fontSize = 14;
           // arrowSize = 15; // Smaller arrow for small screens
           // arrowTopPosition = screenHeight * 0.25;
         } else if (screenHeight < 780 && screenHeight > 690) {
-         // For small screens (e.g., smaller phones)
+          // For small screens (e.g., smaller phones)
           // topPosition = screenHeight * 0.20; // 20% from the top
           // height = screenHeight * 0.20;
           sizeBoxSiz = 2;
-          
 
-           fontSize = 13;
+          fontSize = 13;
           // arrowSize = 15; // Smaller arrow for small screens
           // arrowTopPosition = screenHeight * 0.25;
         } else if (screenHeight < 690 && screenHeight > 500) {
@@ -1983,8 +1903,8 @@ class _ZweiState extends State<Zwei> {
           // topPosition = screenHeight * 0.20; // 20% from the top
           // height = screenHeight * 0.20;
           sizeBoxSiz = 1;
-           fontSize = 10;
-          
+          fontSize = 10;
+
           // arrowSize = 15; // Smaller arrow for small screens
           // arrowTopPosition = screenHeight * 0.25;
         } else {
@@ -1992,13 +1912,12 @@ class _ZweiState extends State<Zwei> {
           // topPosition = screenHeight * 0.20; // 20% from the top
           // height = screenHeight * 0.20;
           sizeBoxSiz = 1;
-           fontSize = 8;
-          
+          fontSize = 8;
+
           // arrowSize = 15; // Smaller arrow for small screens
           // arrowTopPosition = screenHeight * 0.25;
         }
         // Adjust values based on screen height
-       
 
         // Adjust font size and layout based on screen width
         // double fontSize =
@@ -2072,51 +1991,32 @@ class _ZweiState extends State<Zwei> {
       restructpadding = 24;
       if (itemCount >= 9) {
         fontSize = 7.0;
-        
+
         rearrangeListFont = 9;
-        
       } else if (itemCount >= 8) {
         fontSize = 8.0;
-        
-         rearrangeListFont = 9;
-        
+
+        rearrangeListFont = 9;
       } else if (itemCount >= 7) {
         fontSize = 9.0;
-       
-         rearrangeListFont = 9;
-         
-        
+
+        rearrangeListFont = 9;
       } else {
-        
         fontSize = 9.0;
-         rearrangeListFont = 9;
-         
-         
+        rearrangeListFont = 9;
       }
-   }else if (screenHeight < 700) {
-    restructpadding = 21;
-    rearrangeListFont = 6;
-    yunStartrearrangefont = 7.0;
+    } else if (screenHeight < 700) {
+      restructpadding = 21;
+      rearrangeListFont = 6;
+      yunStartrearrangefont = 7.0;
       if (itemCount >= 9) {
         fontSize = 7.0;
-       
-        
-        
       } else if (itemCount >= 8) {
         fontSize = 8.0;
-        
-       
-        
       } else if (itemCount >= 7) {
         fontSize = 9.0;
-        
-        
-        
       } else {
-        
-        
         fontSize = 10.0;
-        
       }
       // pizel 5 6inch Screen Height: 802.9090909090909
     } else if (screenHeight < 830) {
@@ -2125,22 +2025,18 @@ class _ZweiState extends State<Zwei> {
         fontSize = 8.0;
         yunStartrearrangefont = 9.0;
         rearrangeListFont = 10;
-       
       } else if (itemCount >= 8) {
         fontSize = 9.0;
         yunStartrearrangefont = 10.0;
         rearrangeListFont = 10;
-        
       } else if (itemCount >= 7) {
         fontSize = 10.0;
         yunStartrearrangefont = 10.0;
         rearrangeListFont = 10;
-        
       } else {
         yunStartrearrangefont = 10.0;
         rearrangeListFont = 10;
         fontSize = 12.0;
-        
       }
     } else if (screenHeight < 870) {
       restructpadding = 24;
@@ -2148,22 +2044,18 @@ class _ZweiState extends State<Zwei> {
         fontSize = 8.0;
         yunStartrearrangefont = 9.0;
         rearrangeListFont = 10;
-        
       } else if (itemCount >= 8) {
         fontSize = 9.0;
         yunStartrearrangefont = 10.0;
         rearrangeListFont = 10;
-        
       } else if (itemCount >= 7) {
         fontSize = 10.0;
         yunStartrearrangefont = 10.0;
         rearrangeListFont = 10;
-        
       } else {
         yunStartrearrangefont = 10.0;
         rearrangeListFont = 10;
         fontSize = 12.0;
-        
       }
     } else if (screenHeight < 930) {
       restructpadding = 24;
@@ -2171,24 +2063,20 @@ class _ZweiState extends State<Zwei> {
         fontSize = 8.0;
         yunStartrearrangefont = 9.0;
         rearrangeListFont = 10;
-        
       } else if (itemCount >= 8) {
         fontSize = 9.0;
         yunStartrearrangefont = 10.0;
         rearrangeListFont = 10;
-        
       } else if (itemCount >= 7) {
         fontSize = 12.0;
         yunStartrearrangefont = 10.0;
         rearrangeListFont = 10;
-        
       } else {
         yunStartrearrangefont = 10.0;
         rearrangeListFont = 10;
         fontSize = 12.0;
-        
       }
-       } else if (screenHeight < 1200 && screenHeight > 930) {
+    } else if (screenHeight < 1200 && screenHeight > 930) {
       restructpadding = 38;
       if (itemCount >= 9) {
         fontSize = 12.0;
@@ -2207,7 +2095,7 @@ class _ZweiState extends State<Zwei> {
         rearrangeListFont = 10;
         fontSize = 14.0;
       }
-       } else if (screenHeight < 1500 && screenHeight > 1200) {
+    } else if (screenHeight < 1500 && screenHeight > 1200) {
       restructpadding = 38;
       if (itemCount >= 9) {
         fontSize = 14.0;
@@ -2226,8 +2114,8 @@ class _ZweiState extends State<Zwei> {
         rearrangeListFont = 10;
         fontSize = 15.0;
       }
-      } else if (screenHeight < 1900 && screenHeight > 1500) {
-     restructpadding = 38;
+    } else if (screenHeight < 1900 && screenHeight > 1500) {
+      restructpadding = 38;
       fontSize = 20.0;
       yunStartrearrangefont = 20.0;
       rearrangeListFont = 20;
@@ -2492,9 +2380,6 @@ class _ZweiState extends State<Zwei> {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: (starBrightness[index + 1] ?? []).map((str) {
-                    
-                        
-
                         return ConstrainedBox(
                           constraints: BoxConstraints(
                             maxWidth: 50,
@@ -2777,29 +2662,23 @@ class _ZweiState extends State<Zwei> {
   Widget buildCellYearsnum(String text1) {
     // final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-double fontSize;
+    double fontSize;
 
     if (screenHeight > 1800) {
       fontSize = 16.0;
-     } else if (screenHeight < 1800 && screenHeight > 1500) {
+    } else if (screenHeight < 1800 && screenHeight > 1500) {
       fontSize = 14.0;
     } else if (screenHeight < 1200 && screenHeight > 930) {
       fontSize = 12.0;
-     
     } else if (screenHeight < 930 && screenHeight > 780) {
       fontSize = 10.0;
-     
     } else if (screenHeight < 780 && screenHeight > 690) {
       fontSize = 10.0;
-      
     } else if (screenHeight < 690 && screenHeight > 500) {
       fontSize = 8.0;
-      
     } else {
       fontSize = 8.0;
-      
     }
-       
 
     return GestureDetector(
       child: Container(
