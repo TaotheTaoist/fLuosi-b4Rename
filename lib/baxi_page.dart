@@ -2574,53 +2574,53 @@ class _BaziPageState extends State<BaziPage> {
       );
     }
 
-    Widget buildLongCellzhi(String text1, int index,
-        [List<String>? sideTexts]) {
-      return GestureDetector(
-        onTap: () {
-          liuMonthHolder = text1;
-          liuMonthHolderZhi = sideTexts![0];
-          colorIndexDayun = index;
-          // liuMonthshiShenholdergan;
-          // liuMonthshiShenholderzhi = sideTexts![0];
-          print('Tapped cell at index $index');
-        },
-        child: Container(
-          color: colorIndexDayun == index
-              ? Colors.blue
-                  .withOpacity(0.3) // Highlight selected cell with 0.3 opacity
-              : Colors.transparent,
-          padding: EdgeInsets.symmetric(horizontal: 2.0, vertical: 8.0),
-          alignment: Alignment.center,
-          constraints:
-              const BoxConstraints(minWidth: 30.0), // Adjust minWidth as needed
-          child: FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Row(
-              children: [
-                Text(
-                  text1,
-                  style: TextStyle(fontSize: 14, color: getColorForText(text1)),
-                  overflow: TextOverflow.ellipsis,
-                ),
-                SizedBox(width: 4),
-                if (sideTexts != null)
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: sideTexts.map((text) {
-                      return Text(
-                        text,
-                        style: TextStyle(fontSize: 12),
-                        overflow: TextOverflow.ellipsis,
-                      );
-                    }).toList(),
-                  ),
-              ],
-            ),
-          ),
-        ),
-      );
-    }
+    // Widget buildLongCellzhi(String text1, int index,
+    //     [List<String>? sideTexts]) {
+    //   return GestureDetector(
+    //     onTap: () {
+    //       liuMonthHolder = text1;
+    //       liuMonthHolderZhi = sideTexts![0];
+    //       colorIndexDayun = index;
+    //       // liuMonthshiShenholdergan;
+    //       // liuMonthshiShenholderzhi = sideTexts![0];
+    //       print('Tapped cell at index $index');
+    //     },
+    //     child: Container(
+    //       color: colorIndexDayun == index
+    //           ? Colors.blue
+    //               .withOpacity(0.3) // Highlight selected cell with 0.3 opacity
+    //           : Colors.transparent,
+    //       padding: EdgeInsets.symmetric(horizontal: 2.0, vertical: 8.0),
+    //       alignment: Alignment.center,
+    //       constraints:
+    //           const BoxConstraints(minWidth: 30.0), // Adjust minWidth as needed
+    //       child: FittedBox(
+    //         fit: BoxFit.scaleDown,
+    //         child: Row(
+    //           children: [
+    //             Text(
+    //               text1,
+    //               style: TextStyle(fontSize: 14, color: getColorForText(text1)),
+    //               overflow: TextOverflow.ellipsis,
+    //             ),
+    //             SizedBox(width: 4),
+    //             if (sideTexts != null)
+    //               Column(
+    //                 crossAxisAlignment: CrossAxisAlignment.start,
+    //                 children: sideTexts.map((text) {
+    //                   return Text(
+    //                     text,
+    //                     style: TextStyle(fontSize: 12),
+    //                     overflow: TextOverflow.ellipsis,
+    //                   );
+    //                 }).toList(),
+    //               ),
+    //           ],
+    //         ),
+    //       ),
+    //     ),
+    //   );
+    // }
 
     TableRow buildLongRow(List<Widget> cells) {
       return TableRow(

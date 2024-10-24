@@ -1,4 +1,7 @@
+// ignore_for_file: file_names
+
 import '../../lunar.dart';
+
 /// 流年
 /// @author 6tail
 class LiuNian {
