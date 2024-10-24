@@ -55,6 +55,7 @@ class _BaziPageState extends State<BaziPage> {
   late String age;
   late int ageInt;
   late String dayunAge;
+  String liunenAgeholder = "";
 
   //月干月支用
   int selectedYear = 0;
@@ -1493,6 +1494,50 @@ class _BaziPageState extends State<BaziPage> {
     }
   }
 
+  void yearIncreaseIndexLiunen(int tappedCellIndex) {
+    switch (tappedCellIndex) {
+      case 0:
+        liunenAgeholder = liunenZh1NumAge;
+
+        break;
+      case 1:
+        liunenAgeholder = liunenZhi2NumAge;
+        break;
+
+      case 2:
+        liunenAgeholder = liunenZhi3NumAge;
+
+        break;
+      case 3:
+        liunenAgeholder = liunenZhi4NumAge;
+        break;
+      case 4:
+        liunenAgeholder = liunenZhi5NumAge;
+        break;
+      case 5:
+        liunenAgeholder = liunenZhi6NumAge;
+        break;
+      case 6:
+        liunenAgeholder = liunenZhi7NumAge;
+        break;
+      case 7:
+        liunenAgeholder = liunenZhi8NumAge;
+        break;
+      case 8:
+        liunenAgeholder = liunenZhi9NumAge;
+        break;
+      case 9:
+        liunenAgeholder = liunenZhi10NumAge;
+        break;
+
+      default:
+        print('6: yearIncreaseIndex');
+
+        // Perform any other actions for default case
+        break;
+    }
+  }
+
   void xingYunZhiIndex(int tappedCellIndex) {
     switch (tappedCellIndex) {
       case 1:
@@ -2263,7 +2308,7 @@ class _BaziPageState extends State<BaziPage> {
 
             // this code must be above thisYearGan and thisYearZhi
             liunenChange();
-
+            yearIncreaseIndexLiunen(index);
             // thisYearGan and thisYearZhi both codes must live under liunenChange()
             thisYearGan = text1;
             thisYearZhi = text2!;
@@ -2569,7 +2614,7 @@ class _BaziPageState extends State<BaziPage> {
         buildCell(''),
         buildCell(''),
         buildCell('$dayunAge歲'),
-        buildCell(''),
+        buildCell('$liunenAgeholder歲'),
         buildCell(''),
         buildCell(''),
       ]),
