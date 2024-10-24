@@ -59,7 +59,7 @@ class gods {
     hangguest = hangGuest(yearBot, timebot);
     guchenc = guchen(yearBot, timebot);
     guasuc = guasu(yearBot, timebot);
-    huagaiYearc = huagai(yeartop, timebot);
+    huagaiYearc = huagai(yearBot, timebot);
     taiChiyear = taichi(yeartop, timebot);
     horseYearc = horse(yearBot, timebot);
     guoYinYearc = guoYin(yeartop, timebot);
@@ -188,6 +188,8 @@ class gods {
     String moonderc = "";
     String happygodc = "";
 
+    String suicidalc = "";
+    String suicidalcc = "";
     String guoYinYearc = "";
     String guoyindayc = "";
     String learnerc = "";
@@ -195,7 +197,7 @@ class gods {
     String horsec = "";
     String taiChiyearc = "";
     String taiChic = "";
-    String huagaic = "";
+
     String huagaiYearc = "";
     String allwrongc = "";
     String bloodswordc = "";
@@ -225,7 +227,7 @@ class gods {
     hangguestc = hangGuest(yearBot, daybot);
     guchenc = guchen(yearBot, daybot);
     guasuc = guasu(yearBot, daybot);
-    huagaiYearc = huagai(yeartop, daybot);
+    huagaiYearc = huagai(yearBot, daybot);
     taiChiyearc = taichi(yeartop, daybot);
     happygodyearc = happyGod(yeartop, daybot);
     horseYearc = horse(yearBot, daybot);
@@ -258,7 +260,7 @@ class gods {
     bloodswordc = bloodSword(subject, daybot);
     forgivenEssc = forgiveness(subject, daybot);
     allwrongc = allWrong(subject, daybot);
-    huagaic = huagai(daybot, daybot);
+
     guoyindayc = guoYin(subject, daybot);
     tianyic = tianYi(subject, daybot);
     pearlc = pearl(subject, daybot);
@@ -273,6 +275,8 @@ class gods {
     moonderc = moonDer(monthbot, subject);
     tianderc = tianDer(monthbot, subject);
     fiveghostc = fiveGhost(monthbot, daybot);
+    suicidalc = suicidal(daybot, monthbot);
+    suicidalcc = suicidal(daybot, yearBot);
 
     List<String> allgods = [
       tianyic,
@@ -300,7 +304,6 @@ class gods {
       horseYearc,
       taiChic,
       taiChiyearc,
-      huagaic,
       huagaiYearc,
       allwrongc,
       sheepswordc,
@@ -326,7 +329,9 @@ class gods {
       pearlc,
       pearlyearc,
       happygodyearc,
-      ironmanc
+      ironmanc,
+      suicidalcc,
+      suicidalc
     ];
 
     List<String> allgodset = [];
@@ -396,7 +401,7 @@ class gods {
     hangguestc = hangGuest(yearBot, monthbot);
     guchenc = guchen(yearBot, monthbot);
     guasuc = guasu(yearBot, monthbot);
-    huagaiYearc = huagai(yeartop, monthbot);
+    huagaiYearc = huagai(yearBot, monthbot);
     taiChiyearc = taichi(yeartop, monthbot);
     happygodyearc = happyGod(yeartop, monthbot);
     horseYearc = horse(yearBot, monthbot);
@@ -516,7 +521,7 @@ class gods {
     String taiChiyearc = "";
     String taiChic = "";
     String huagaic = "";
-    String huagaiYearc = "";
+
     String thiefdayc = "";
     String bloodswordc = "";
     String sheepswordc = "";
@@ -529,10 +534,12 @@ class gods {
     String pearlyearc = "";
     String happygodyearc = "";
     String sixbadsc = "";
+    String suicidalcc = "";
+    String suicidalc = "";
 
     // Calculations (replace with your actual calculation functions)
     sixbadsc = sixBads(daybot, yearBot);
-    huagaiYearc = huagai(yeartop, yearBot);
+
     taiChiyearc = taichi(yeartop, yearBot);
     happygodyearc = happyGod(yeartop, yearBot);
     horseYearc = horse(yearBot, daybot);
@@ -560,9 +567,11 @@ class gods {
     tianyic = tianYi(subject, yearBot);
     pearlc = pearl(subject, yearBot);
     guoyindayc = guoYin(subject, yearBot);
-    generalc = general(daybot, yearBot);
+    generalc = general(yearBot, daybot);
     happygodc = happyGod(subject, yearBot);
     hongYangc = hongyang(subject, yearBot);
+    suicidalc = suicidal(yearBot, monthbot);
+    suicidalcc = suicidal(yearBot, daybot);
 
     List<String> allgods = [
       tianyic,
@@ -584,7 +593,6 @@ class gods {
       taiChic,
       taiChiyearc,
       huagaic,
-      huagaiYearc,
       thiefdayc,
       bloodswordc,
       sheepswordc,
@@ -596,7 +604,9 @@ class gods {
       pearlc,
       pearlyearc,
       happygodyearc,
-      sixbadsc
+      sixbadsc,
+      suicidalc,
+      suicidalcc
     ];
 
     List<String> allgodset = [];
@@ -670,7 +680,7 @@ class gods {
     sixbadsc = sixBads(daybot, Dayunbot);
     Guchenc = guchen(yearBot, Dayunbot);
     Guasuc = guasu(yearBot, Dayunbot);
-    huagaiYearc = huagai(yeartop, Dayunbot);
+    huagaiYearc = huagai(yearBot, Dayunbot);
     taiChiyearc = taichi(yeartop, Dayunbot);
     happygodyearc = happyGod(yeartop, Dayunbot);
     horseYearc = horse(yearBot, Dayunbot);
@@ -830,7 +840,7 @@ class gods {
     sixbadsc = sixBads(daybot, liuYears);
     guchenc = guchen(yearBot, liuYears);
     guasuc = guasu(yearBot, liuYears);
-    huagaiYearc = huagai(yeartop, liuYears);
+    huagaiYearc = huagai(yearBot, liuYears);
     taiChiyearc = taichi(yeartop, liuYears);
     happygodyearc = happyGod(yeartop, liuYears);
     horseYearc = horse(yearBot, liuYears);
@@ -989,7 +999,7 @@ class gods {
     sixbadsc = sixBads(daybot, liumonths);
     Guchenc = guchen(yearBot, liumonths);
     Guasuc = guasu(yearBot, liumonths);
-    huagaiYearc = huagai(yeartop, liumonths);
+    huagaiYearc = huagai(yearBot, liumonths);
     taiChiyearc = taichi(yeartop, liumonths);
     happygodyearc = happyGod(yeartop, liumonths);
     horseYearc = horse(yearBot, liumonths);
@@ -1150,7 +1160,7 @@ class gods {
     sixbadsc = sixBads(pickerDatebot, pickerDatebot);
     Guchenc = guchen(yearBot, pickerDatebot);
     Guasuc = guasu(yearBot, pickerDatebot);
-    huagaiYearc = huagai(yeartop, pickerDatebot);
+    huagaiYearc = huagai(yearBot, pickerDatebot);
     taiChiyearc = taichi(yeartop, pickerDatebot);
     happygodyearc = happyGod(yeartop, pickerDatebot);
     horseYearc = horse(yearBot, pickerDatebot);
@@ -2701,7 +2711,7 @@ class gods {
       return "咸池";
     } else if (validSubjects12.contains(yearOrdayBot) &&
         validTimebots12.contains(timebot)) {
-      return "將星";
+      return "咸池";
     }
 
     return "";
@@ -3193,6 +3203,30 @@ class gods {
     return "";
   }
 
+  static String suicidal(String yearOrdayBot, String timebot) {
+    final Map<String, Set<String>> validCombinations = {
+      "辰": {"亥"},
+      "亥": {"辰"},
+      "戌": {"巳"},
+      "巳": {"戌"},
+      "寅": {"未"},
+      "未": {"寅"},
+      "卯": {"申"},
+      "申": {"卯"},
+      "午": {"丑"},
+      "丑": {"午"},
+      "子": {"酉"},
+      "酉": {"子"},
+    };
+
+    if (validCombinations.containsKey(yearOrdayBot) &&
+        validCombinations[yearOrdayBot]!.contains(timebot)) {
+      return "自縊";
+    }
+
+    return "";
+  }
+
   static String smallWaste(String yearBot, String anybot) {
     final Map<String, Set<String>> validCombinations = {
       "子": {"午"},
@@ -3427,7 +3461,7 @@ class gods {
     final validTimebots7 = ["午"];
 
     final validSubjects8 = ["未"];
-    final validTimebots8 = ["申"];
+    final validTimebots8 = ["卯"];
 
     final validSubjects9 = ["申"];
     final validTimebots9 = ["子"];

@@ -241,6 +241,9 @@
 import 'package:flutter/material.dart';
 import 'package:isar/isar.dart';
 import 'new_member.dart';
+import 'package:learn1/lang/languageProvider.dart';
+import 'package:provider/provider.dart';
+import 'package:learn1/lang/TranslationKey.dart';
 
 class NewMemberDialog extends StatefulWidget {
   final Isar isar;
@@ -318,8 +321,10 @@ class _NewMemberDialogState extends State<NewMemberDialog> {
 
   @override
   Widget build(BuildContext context) {
+    final isEnglish = Provider.of<LanguageProvider>(context)
+        .isEnglish; // Access language state
     return AlertDialog(
-      title: const Text('加新資料'),
+      title: Text('${translate(TranslationKey.addnewMember, isEnglish)}'),
       content: SingleChildScrollView(
         child: ConstrainedBox(
           constraints: BoxConstraints(
@@ -337,8 +342,26 @@ class _NewMemberDialogState extends State<NewMemberDialog> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('性別: ${isMale ? "男" : "女"}'),
-                  Switch(
+                //   Text('${translate(TranslationKey.sex, isEnglish)}: ${isMale ? "男" : "女"}'),
+                //   Switch(
+                //     value: isMale,
+                //     onChanged: (value) {
+                //       setState(() {
+                //         isMale = value;
+                //       });
+                //     },
+                //   ),
+                Text('${translate(TranslationKey.sex, isEnglish)}:'),
+                  Icon(
+                    isMale
+                        ? Icons.male
+                        : Icons
+                            .female, // Use Icons.male or Icons.female based on gender
+                    color: isMale
+                        ? Colors.blue
+                        : Colors.pink, // Optionally set colors
+                  ),
+                    Switch(
                     value: isMale,
                     onChanged: (value) {
                       setState(() {
@@ -347,16 +370,17 @@ class _NewMemberDialogState extends State<NewMemberDialog> {
                     },
                   ),
                 ],
+                
               ),
               SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                      '生日: ${selectedDate != null ? "${selectedDate!.toLocal()}".split(' ')[0] : "還未選"}'),
+                      '${translate(TranslationKey.bd, isEnglish)}: ${selectedDate != null ? "${selectedDate!.toLocal()}".split(' ')[0] :'${translate(TranslationKey.unselected, isEnglish)}'}'),
                   TextButton(
                     onPressed: () => _selectDate(context),
-                    child: const Text('日期'),
+                    child:Text('${translate(TranslationKey.bd, isEnglish)}'),
                   ),
                 ],
               ),
@@ -380,11 +404,12 @@ class _NewMemberDialogState extends State<NewMemberDialog> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                        'Time: ${selectedTime != null ? selectedTime!.format(context) : "還未選"}'),
+                     Text(
+                        '${translate(TranslationKey.time, isEnglish)}: ${selectedTime != null ? "${selectedTime!.format(context)}".split(' ')[0] : '${translate(TranslationKey.unselected, isEnglish)}'}'),
                     TextButton(
                       onPressed: () => _selectTime(context),
-                      child: const Text('時間'),
+                      child:  Text(
+                          '${translate(TranslationKey.time, isEnglish)}'),
                     ),
                   ],
                 ),

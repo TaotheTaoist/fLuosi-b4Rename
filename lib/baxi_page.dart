@@ -31,8 +31,6 @@ class BaziPage extends StatefulWidget {
 }
 
 class _BaziPageState extends State<BaziPage> {
-   
-  
   // late double textfont;
 
   int tappedCellIndex = 0;
@@ -46,6 +44,7 @@ class _BaziPageState extends State<BaziPage> {
   //increment for taps usage
   late int year;
   int month = 1;
+  int liunenIntholder = 0;
 
   late DateTime dateLiunen = DateTime(year, 5, 2);
 
@@ -55,6 +54,8 @@ class _BaziPageState extends State<BaziPage> {
 
   late String age;
   late int ageInt;
+  late String dayunAge;
+  String liunenAgeholder = "";
 
   //月干月支用
   int selectedYear = 0;
@@ -165,6 +166,28 @@ class _BaziPageState extends State<BaziPage> {
   late String dayunNum9;
   late String dayunNum10;
 
+  int liuneneholderInt = 0;
+  int liuneneholderInt2 = 0;
+  int liuneneholderInt3 = 0;
+  int liuneneholderInt4 = 0;
+  int liuneneholderInt5 = 0;
+  int liuneneholderInt6 = 0;
+  int liuneneholderInt7 = 0;
+  int liuneneholderInt8 = 0;
+  int liuneneholderInt9 = 0;
+  int liuneneholderInt10 = 0;
+
+  String dayunNumAge = "";
+  String dayunNumAge2 = "";
+  String dayunNumAge3 = "";
+  String dayunNumAge4 = "";
+  String dayunNumAge5 = "";
+  String dayunNumAge6 = "";
+  String dayunNumAge7 = "";
+  String dayunNumAge8 = "";
+  String dayunNumAge9 = "";
+  String dayunNumAge10 = "";
+
   late String daYunStartYear;
   late String daYunEndYear;
   late int daYunStartAge;
@@ -225,6 +248,17 @@ class _BaziPageState extends State<BaziPage> {
   late String liunenZhi8Num;
   late String liunenZhi9Num;
   late String liunenZhi10Num;
+
+  late String liunenZh1NumAge;
+  late String liunenZhi2NumAge;
+  late String liunenZhi3NumAge;
+  late String liunenZhi4NumAge;
+  late String liunenZhi5NumAge;
+  late String liunenZhi6NumAge;
+  late String liunenZhi7NumAge;
+  late String liunenZhi8NumAge;
+  late String liunenZhi9NumAge;
+  late String liunenZhi10NumAge;
 
   late String liuMonthHolder;
   late String liuMonthHolderZhi;
@@ -358,9 +392,8 @@ class _BaziPageState extends State<BaziPage> {
   late List<String> runAllgodsLiuMonth;
   late List<String> runAllgodspickDate;
 
-
   //Fonts
-  
+
   List<String> getDayunGanShishenZhi(String first, String second) {
     List<String> elements = LunarUtil.ZHI_HIDE_GAN[second] ?? [];
 
@@ -548,6 +581,7 @@ class _BaziPageState extends State<BaziPage> {
     daYunStartYear = daYun.getStartYear().toString();
     daYunEndYear = daYun.getEndYear().toString();
     daYunStartAge = daYun.getStartAge();
+
     daYunEndAge = daYun.getEndAge().toString();
     daYunGanZhi = daYun.getGanZhi();
     //Dayun start. first dayunGanzhi use daYun withot #
@@ -575,6 +609,27 @@ class _BaziPageState extends State<BaziPage> {
     dayunNum9 = (daYun.getStartYear() + 80).toString();
     dayunNum10 = (daYun.getStartYear() + 90).toString();
 
+    liuneneholderInt = daYun.getStartAge();
+    liuneneholderInt = (daYun.getStartAge() + 10);
+    liuneneholderInt = (daYun.getStartAge() + 20);
+    liuneneholderInt = (daYun.getStartAge() + 30);
+    liuneneholderInt = (daYun.getStartAge() + 40);
+    liuneneholderInt = (daYun.getStartAge() + 50);
+    liuneneholderInt = (daYun.getStartAge() + 60);
+    liuneneholderInt = (daYun.getStartAge() + 70);
+    liuneneholderInt = (daYun.getStartAge() + 80);
+    liuneneholderInt = (daYun.getStartAge() + 90);
+    dayunNumAge = (daYun.getStartAge()).toString();
+    dayunNumAge2 = (daYun.getStartAge() + 10).toString();
+    dayunNumAge3 = (daYun.getStartAge() + 20).toString();
+    dayunNumAge4 = (daYun.getStartAge() + 30).toString();
+    dayunNumAge5 = (daYun.getStartAge() + 40).toString();
+    dayunNumAge6 = (daYun.getStartAge() + 50).toString();
+    dayunNumAge7 = (daYun.getStartAge() + 60).toString();
+    dayunNumAge8 = (daYun.getStartAge() + 70).toString();
+    dayunNumAge9 = (daYun.getStartAge() + 80).toString();
+    dayunNumAge10 = (daYun.getStartAge() + 90).toString();
+
     firstDayunInt = daYun.getStartYear();
     secDayunInt = (daYun.getStartYear() + 10);
     year = firstDayunInt;
@@ -592,6 +647,7 @@ class _BaziPageState extends State<BaziPage> {
     liuMonthHolderZhi = toDay.getMonthZhi();
 
     print(age);
+    dayunAge = age;
     print('DaYun Start Year: $daYunStartYear');
     print('DaYun End Year: $daYunEndYear');
     print('DaYun Start Age: $daYunStartAge');
@@ -628,6 +684,7 @@ class _BaziPageState extends State<BaziPage> {
     thisYearZhi = toDay.getYearZhi();
 
     currentDaYunPeriod = calculateDaYunPeriod(daYunStartAge, ageInt);
+    print("currentDaYunPeriod: $currentDaYunPeriod baxi_page.dart");
 
     daYunHoldergan = daYunPlaceHold(currentDaYunPeriod)[0];
     daYunHolderZhi = daYunPlaceHold(currentDaYunPeriod)[1];
@@ -1061,6 +1118,19 @@ class _BaziPageState extends State<BaziPage> {
     liunenZhi9Num = (year + 8).toString();
     liunenZhi10Num = (year + 9).toString();
 
+    liunenZh1NumAge = (daYunStartAge + liunenIntholder).toString();
+    print("wtf daYunStartAge$daYunStartAge");
+
+    liunenZhi2NumAge = (daYunStartAge + liunenIntholder + 1).toString();
+    liunenZhi3NumAge = (daYunStartAge + liunenIntholder + 2).toString();
+    liunenZhi4NumAge = (daYunStartAge + liunenIntholder + 3).toString();
+    liunenZhi5NumAge = (daYunStartAge + liunenIntholder + 4).toString();
+    liunenZhi6NumAge = (daYunStartAge + liunenIntholder + 5).toString();
+    liunenZhi7NumAge = (daYunStartAge + liunenIntholder + 6).toString();
+    liunenZhi8NumAge = (daYunStartAge + liunenIntholder + 7).toString();
+    liunenZhi9NumAge = (daYunStartAge + liunenIntholder + 8).toString();
+    liunenZhi10NumAge = (daYunStartAge + liunenIntholder + 9).toString();
+
     DateTime thisYear = DateTime(year, 5, 2);
     DateTime year2 = DateTime(year + 1, 5, 2);
     DateTime year3 = DateTime(year + 2, 5, 2);
@@ -1346,56 +1416,120 @@ class _BaziPageState extends State<BaziPage> {
         break;
 
       case 3:
-        print('3 : yearIncreaseIndex');
         year = firstDayunInt;
-
-        // Perform any other actions for case 1
+        print('3 : yearIncreaseIndex');
+        dayunAge = dayunNumAge;
+        liunenIntholder = 0;
         break;
       case 4:
         print('4 : yearIncreaseIndex');
         year = secDayunInt;
-        // Perform any other actions for case 1
+        dayunAge = dayunNumAge2;
+
+        liunenIntholder = 10;
+        print('this is liunenIntholder: $liunenIntholder');
         break;
       case 5:
         print('5: yearIncreaseIndex ');
         year = thirdDayunInt;
-        // Perform any other actions for case 1
+        dayunAge = dayunNumAge3;
+
+        liunenIntholder = 20;
+        print('this is liunenIntholder: $liunenIntholder');
         break;
       case 6:
         print('6: yearIncreaseIndex ');
         year = fourthDayunInt;
-        // Perform any other actions for case 1
+        dayunAge = dayunNumAge4;
+        liunenIntholder = 30;
+        print('this is liunenIntholder: $liunenIntholder');
         break;
       case 7:
         print('7: yearIncreaseIndex ');
         year = fifthDayunInt;
-        // Perform any other actions for case 1
+        dayunAge = dayunNumAge5;
+        liunenIntholder = 40;
+        print('this is liunenIntholder: $liunenIntholder');
         break;
       case 8:
         print('8: yearIncreaseIndex ');
         year = sixthDayunInt;
-        // Perform any other actions for case 1
+        dayunAge = dayunNumAge6;
+        liunenIntholder = 50;
+        print('this is liunenIntholder: $liunenIntholder');
         break;
       case 9:
         print('9: yearIncreaseIndex ');
         year = seventhDayunInt;
-        // Perform any other actions for case 1
+        dayunAge = dayunNumAge7;
+        liunenIntholder = 60;
+        print('this is liunenIntholder: $liunenIntholder');
         break;
       case 10:
         print('10: yearIncreaseIndex ');
         year = eighthDayunInt;
-        // Perform any other actions for case 1
+        dayunAge = dayunNumAge8;
+        liunenIntholder = 70;
+        print('this is liunenIntholder: $liunenIntholder');
         break;
       case 11:
         print('11: yearIncreaseIndex ');
         year = ninethDayunInt;
-        // Perform any other actions for case 1
+        dayunAge = dayunNumAge9;
+        liunenIntholder = 80;
+        print('this is liunenIntholder: $liunenIntholder');
         break;
       case 12:
         print('12: yearIncreaseIndex ');
         year = tenthDayunInt;
-        // Perform any other actions for case 1
+        dayunAge = dayunNumAge10;
+        liunenIntholder = 90;
+        print('this is liunenIntholder: $liunenIntholder');
         break;
+      default:
+        print('6: yearIncreaseIndex');
+
+        // Perform any other actions for default case
+        break;
+    }
+  }
+
+  void yearIncreaseIndexLiunen(int tappedCellIndex) {
+    switch (tappedCellIndex) {
+      case 0:
+        liunenAgeholder = liunenZh1NumAge;
+
+        break;
+      case 1:
+        liunenAgeholder = liunenZhi2NumAge;
+        break;
+
+      case 2:
+        liunenAgeholder = liunenZhi3NumAge;
+
+        break;
+      case 3:
+        liunenAgeholder = liunenZhi4NumAge;
+        break;
+      case 4:
+        liunenAgeholder = liunenZhi5NumAge;
+        break;
+      case 5:
+        liunenAgeholder = liunenZhi6NumAge;
+        break;
+      case 6:
+        liunenAgeholder = liunenZhi7NumAge;
+        break;
+      case 7:
+        liunenAgeholder = liunenZhi8NumAge;
+        break;
+      case 8:
+        liunenAgeholder = liunenZhi9NumAge;
+        break;
+      case 9:
+        liunenAgeholder = liunenZhi10NumAge;
+        break;
+
       default:
         print('6: yearIncreaseIndex');
 
@@ -1629,19 +1763,14 @@ class _BaziPageState extends State<BaziPage> {
 
   @override
   Widget build(BuildContext context) {
-    
-    final screenWidth = MediaQuery.of(context).size.width;
+    // final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
     // Calculate the box size based on screen dimensions
-    final boxHeight = screenHeight * 0.18; // 18% of the screen height
-    final boxWidth = screenWidth * 0.22; // 22% of the screen width
 
     // Replace with actual index or pass it accordingly
-    int index = 0;
 
     // Get the number of items in the starMapping list
-
 
     // Initialize font size and padding variables
     double textfontSize = 14;
@@ -1650,7 +1779,7 @@ class _BaziPageState extends State<BaziPage> {
     double liunenCustomFont = 12;
     double liunenCustomFontshiShen = 10;
 
-       if (screenHeight > 1800) {
+    if (screenHeight > 1800) {
       titleFont = 18;
       textfontSize = 21;
       textfontSizeShisen = 14;
@@ -1722,7 +1851,9 @@ class _BaziPageState extends State<BaziPage> {
             children: [
               AutoSizeText(
                 text1,
-                style: TextStyle(fontSize: titleFont, color: getColorForText(text1),
+                style: TextStyle(
+                  fontSize: titleFont,
+                  color: getColorForText(text1),
                   fontWeight: FontWeight.bold,
                 ),
                 overflow: TextOverflow.ellipsis,
@@ -1732,7 +1863,9 @@ class _BaziPageState extends State<BaziPage> {
               if (text2 != null)
                 AutoSizeText(
                   text2,
-                  style: TextStyle(fontSize: titleFont, color: getColorForText(text2),
+                  style: TextStyle(
+                    fontSize: titleFont,
+                    color: getColorForText(text2),
                     fontWeight: FontWeight.bold,
                   ),
                   overflow: TextOverflow.ellipsis,
@@ -1754,7 +1887,8 @@ class _BaziPageState extends State<BaziPage> {
           children: [
             AutoSizeText(
               text1,
-              style: TextStyle(fontSize: titleFont, color: getColorForText(text1)),
+              style:
+                  TextStyle(fontSize: titleFont, color: getColorForText(text1)),
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
               minFontSize: 6, // Adjust this value as needed
@@ -1762,7 +1896,8 @@ class _BaziPageState extends State<BaziPage> {
             if (text2 != null)
               AutoSizeText(
                 text2,
-                style: TextStyle(fontSize: titleFont, color: getColorForText(text2)),
+                style: TextStyle(
+                    fontSize: titleFont, color: getColorForText(text2)),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
                 minFontSize: 6, // Adjust this value as needed
@@ -2049,7 +2184,7 @@ class _BaziPageState extends State<BaziPage> {
                 LunarUtil.KONGWAN['$daYunHoldergan$daYunHolderZhi']![0];
             daYunKongWanZhi =
                 LunarUtil.KONGWAN['$daYunHoldergan$daYunHolderZhi']![1];
-
+            // liunenchange must run after yearIncreaseIndex(tappedCellIndex)!!
             yearIncreaseIndex(index);
             dayunShishenChange(text1, text2!);
 
@@ -2074,7 +2209,7 @@ class _BaziPageState extends State<BaziPage> {
                 Subject: lunarDate.getDayGan(),
                 sex: widget.sex!,
                 monthbot: lunarDate.getMonthZhi());
-
+            // liunenchange must run after yearIncreaseIndex(tappedCellIndex)!!
             liunenChange();
             // reset year
             colorIndexDayun = index;
@@ -2173,7 +2308,7 @@ class _BaziPageState extends State<BaziPage> {
 
             // this code must be above thisYearGan and thisYearZhi
             liunenChange();
-
+            yearIncreaseIndexLiunen(index);
             // thisYearGan and thisYearZhi both codes must live under liunenChange()
             thisYearGan = text1;
             thisYearZhi = text2!;
@@ -2286,13 +2421,42 @@ class _BaziPageState extends State<BaziPage> {
       );
     }
 
-    Widget buildCellYearsnum(String text1) {
-       double screenHeight = MediaQuery.of(context).size.height;
+    Widget buildCellYearsnum2(String text1) {
+      double screenHeight = MediaQuery.of(context).size.height;
       double screenWidth = MediaQuery.of(context).size.width;
 
-       print("Screen Height: $screenHeight");
-      
-      print("Width: $screenWidth");
+      // print("Screen Height: $screenHeight");
+
+      // print("Width: $screenWidth");
+      return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 0.1, vertical: 1.0),
+        alignment: Alignment.center,
+        child: Column(
+          mainAxisAlignment:
+              MainAxisAlignment.center, // Center content vertically
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            AutoSizeText(
+              text1,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+              // Maximum font size
+              overflow: TextOverflow.visible,
+              maxLines: 1,
+              minFontSize: 6, // Minimum font size
+              //  textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      );
+    }
+
+    Widget buildCellYearsnum(String text1, String text2) {
+      double screenHeight = MediaQuery.of(context).size.height;
+      double screenWidth = MediaQuery.of(context).size.width;
+
       return GestureDetector(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 0.1, vertical: 1.0),
@@ -2308,11 +2472,18 @@ class _BaziPageState extends State<BaziPage> {
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
-                // Maximum font size
                 overflow: TextOverflow.visible,
                 maxLines: 1,
                 minFontSize: 6, // Minimum font size
-                //  textAlign: TextAlign.center,
+              ),
+              AutoSizeText(
+                text2,
+                style: const TextStyle(
+                  fontSize: 14,
+                ),
+                overflow: TextOverflow.visible,
+                maxLines: 1,
+                minFontSize: 6, // Minimum font size
               ),
             ],
           ),
@@ -2408,7 +2579,9 @@ class _BaziPageState extends State<BaziPage> {
                 children: sideTexts.map((text) {
                   return Text(
                     text,
-                    style: TextStyle(fontSize: textfontSizeShisen, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: textfontSizeShisen,
+                        fontWeight: FontWeight.bold),
                     overflow: TextOverflow.ellipsis,
                   );
                 }).toList(),
@@ -2440,8 +2613,8 @@ class _BaziPageState extends State<BaziPage> {
         buildCell(''),
         buildCell(''),
         buildCell(''),
-        buildCell(''),
-        buildCell(''),
+        buildCell('$dayunAge歲'),
+        buildCell('$liunenAgeholder歲'),
         buildCell(''),
         buildCell(''),
       ]),
@@ -2574,53 +2747,53 @@ class _BaziPageState extends State<BaziPage> {
       );
     }
 
-    Widget buildLongCellzhi(String text1, int index,
-        [List<String>? sideTexts]) {
-      return GestureDetector(
-        onTap: () {
-          liuMonthHolder = text1;
-          liuMonthHolderZhi = sideTexts![0];
-          colorIndexDayun = index;
-          // liuMonthshiShenholdergan;
-          // liuMonthshiShenholderzhi = sideTexts![0];
-          print('Tapped cell at index $index');
-        },
-        child: Container(
-          color: colorIndexDayun == index
-              ? Colors.blue
-                  .withOpacity(0.3) // Highlight selected cell with 0.3 opacity
-              : Colors.transparent,
-          padding: EdgeInsets.symmetric(horizontal: 2.0, vertical: 8.0),
-          alignment: Alignment.center,
-          constraints:
-              const BoxConstraints(minWidth: 30.0), // Adjust minWidth as needed
-          child: FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Row(
-              children: [
-                Text(
-                  text1,
-                  style: TextStyle(fontSize: 14, color: getColorForText(text1)),
-                  overflow: TextOverflow.ellipsis,
-                ),
-                SizedBox(width: 4),
-                if (sideTexts != null)
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: sideTexts.map((text) {
-                      return Text(
-                        text,
-                        style: TextStyle(fontSize: 12),
-                        overflow: TextOverflow.ellipsis,
-                      );
-                    }).toList(),
-                  ),
-              ],
-            ),
-          ),
-        ),
-      );
-    }
+    // Widget buildLongCellzhi(String text1, int index,
+    //     [List<String>? sideTexts]) {
+    //   return GestureDetector(
+    //     onTap: () {
+    //       liuMonthHolder = text1;
+    //       liuMonthHolderZhi = sideTexts![0];
+    //       colorIndexDayun = index;
+    //       // liuMonthshiShenholdergan;
+    //       // liuMonthshiShenholderzhi = sideTexts![0];
+    //       print('Tapped cell at index $index');
+    //     },
+    //     child: Container(
+    //       color: colorIndexDayun == index
+    //           ? Colors.blue
+    //               .withOpacity(0.3) // Highlight selected cell with 0.3 opacity
+    //           : Colors.transparent,
+    //       padding: EdgeInsets.symmetric(horizontal: 2.0, vertical: 8.0),
+    //       alignment: Alignment.center,
+    //       constraints:
+    //           const BoxConstraints(minWidth: 30.0), // Adjust minWidth as needed
+    //       child: FittedBox(
+    //         fit: BoxFit.scaleDown,
+    //         child: Row(
+    //           children: [
+    //             Text(
+    //               text1,
+    //               style: TextStyle(fontSize: 14, color: getColorForText(text1)),
+    //               overflow: TextOverflow.ellipsis,
+    //             ),
+    //             SizedBox(width: 4),
+    //             if (sideTexts != null)
+    //               Column(
+    //                 crossAxisAlignment: CrossAxisAlignment.start,
+    //                 children: sideTexts.map((text) {
+    //                   return Text(
+    //                     text,
+    //                     style: TextStyle(fontSize: 12),
+    //                     overflow: TextOverflow.ellipsis,
+    //                   );
+    //                 }).toList(),
+    //               ),
+    //           ],
+    //         ),
+    //       ),
+    //     ),
+    //   );
+    // }
 
     TableRow buildLongRow(List<Widget> cells) {
       return TableRow(
@@ -2773,11 +2946,10 @@ class _BaziPageState extends State<BaziPage> {
         Text(
           '月干',
           style: TextStyle(
-            fontSize: titleFont, 
-                        fontWeight: FontWeight.bold, // Set your desired font size here
+            fontSize: titleFont,
+            fontWeight: FontWeight.bold, // Set your desired font size here
           ),
         ),
-
         buildLongCell(liuMonthGan, 2, [liuMonthZh1shishengan]),
         buildLongCell(liuMonthGan2, 3, [liuMonthZhi2shishengan]),
         buildLongCell(liuMonthGan3, 4, [liuMonthZhi3shishengan]),
@@ -2796,10 +2968,9 @@ class _BaziPageState extends State<BaziPage> {
           '月支',
           style: TextStyle(
             fontSize: titleFont,
-            fontWeight: FontWeight.bold, 
+            fontWeight: FontWeight.bold,
           ),
         ),
-
         buildLongCell('寅', 2, [liuMonthZh1shishenzhi]),
         buildLongCell('卯', 3, [liuMonthZhi2shishenzhi]),
         buildLongCell('辰', 4, [liuMonthZhi3shishenzhi]),
@@ -2814,6 +2985,7 @@ class _BaziPageState extends State<BaziPage> {
         buildLongCell('丑', 1, [liuMonthZhi12shishenzhi]),
       ]),
     ];
+    // ignore: duplicate_ignore
     // ignore: non_constant_identifier_names
     List<TableRow> StarsRows = [
       buildRow([
@@ -2866,24 +3038,24 @@ class _BaziPageState extends State<BaziPage> {
         CellYearsgaps(),
         CellYearsgaps(),
 
-        buildCellYearsnum(dayunNum),
+        buildCellYearsnum(dayunNum, "$dayunNumAge歲"),
 
         CellYearsgaps(),
-        buildCellYearsnum(dayunNum2),
+        buildCellYearsnum(dayunNum2, "$dayunNumAge2歲"),
         CellYearsgaps(),
-        buildCellYearsnum(dayunNum3),
+        buildCellYearsnum(dayunNum3, "$dayunNumAge3歲"),
         CellYearsgaps(),
-        buildCellYearsnum(dayunNum4),
+        buildCellYearsnum(dayunNum4, "$dayunNumAge4歲"),
         CellYearsgaps(),
-        buildCellYearsnum(dayunNum5),
+        buildCellYearsnum(dayunNum5, "$dayunNumAge5歲"),
         CellYearsgaps(),
-        buildCellYearsnum(dayunNum6),
+        buildCellYearsnum(dayunNum6, "$dayunNumAge6歲"),
         CellYearsgaps(),
-        buildCellYearsnum(dayunNum7),
+        buildCellYearsnum(dayunNum7, "$dayunNumAge7歲"),
         CellYearsgaps(),
-        buildCellYearsnum(dayunNum8),
+        buildCellYearsnum(dayunNum8, "$dayunNumAge8歲"),
         CellYearsgaps(),
-        buildCellYearsnum(dayunNum9),
+        buildCellYearsnum(dayunNum9, "$dayunNumAge9歲"),
         CellYearsgaps(),
       ]),
       buildRowYears([
@@ -2916,25 +3088,25 @@ class _BaziPageState extends State<BaziPage> {
       buildRowYears([
         CellYearsgaps(),
         CellYearsgaps(),
-        buildCellYearsnum(liunenZh1Num),
+        buildCellYearsnum(liunenZh1Num, '$liunenZh1NumAge歲'),
         CellYearsgaps(),
-        buildCellYearsnum(liunenZhi2Num),
+        buildCellYearsnum(liunenZhi2Num, '$liunenZhi2NumAge歲'),
         CellYearsgaps(),
-        buildCellYearsnum(liunenZhi3Num),
+        buildCellYearsnum(liunenZhi3Num, '$liunenZhi3NumAge歲'),
         CellYearsgaps(),
-        buildCellYearsnum(liunenZhi4Num),
+        buildCellYearsnum(liunenZhi4Num, '$liunenZhi4NumAge歲'),
         CellYearsgaps(),
-        buildCellYearsnum(liunenZhi5Num),
+        buildCellYearsnum(liunenZhi5Num, '$liunenZhi5NumAge歲'),
         CellYearsgaps(),
-        buildCellYearsnum(liunenZhi6Num),
+        buildCellYearsnum(liunenZhi6Num, '$liunenZhi6NumAge歲'),
         CellYearsgaps(),
-        buildCellYearsnum(liunenZhi7Num),
+        buildCellYearsnum(liunenZhi7Num, '$liunenZhi7NumAge歲'),
         CellYearsgaps(),
-        buildCellYearsnum(liunenZhi8Num),
+        buildCellYearsnum(liunenZhi8Num, '$liunenZhi8NumAge歲'),
         CellYearsgaps(),
-        buildCellYearsnum(liunenZhi9Num),
+        buildCellYearsnum(liunenZhi9Num, '$liunenZhi9NumAge歲'),
         CellYearsgaps(),
-        buildCellYearsnum(liunenZhi10Num),
+        buildCellYearsnum(liunenZhi10Num, '$liunenZhi10NumAge歲'),
         CellYearsgaps(),
       ]),
     ];
